@@ -11,9 +11,11 @@
 body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;background:#F4F2EE;color:#16181D}
 a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div style="width: 1440px; min-height: 1240px; display: flex; background: #F4F2EE">
 
@@ -24,33 +26,9 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8F98">Admin</span>
 </a>
 <nav style="display: flex; flex-direction: column; gap: 2px">
-
-<a href="Admin-Overview.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Overview</a>
-
-<a href="Admin-Articles.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Articles</a>
-
-<a href="Admin-Editor.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">New article</a>
-
-<a href="Admin-Video.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Upload video</a>
-
-<a href="Admin-Homepage.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Homepage layout</a>
-
-<a href="Admin-Media.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Media library</a>
-
-<a href="Admin-Stats.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Statistics</a>
-
-<a href="Admin-Ads.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Ads</a>
-
-<a href="Admin-Comments.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: #2A2D34; color: #FFFFFF; border-left: 3px solid #C23B22">Comments</a>
-
-<a href="Admin-Categories.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Categories &amp; tags</a>
-
-<a href="Admin-Authors.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Authors</a>
-
-<a href="Admin-Users.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Users &amp; roles</a>
-
-<a href="Admin-Settings.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Settings</a>
-
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="13">
+<a href="{{n.href}}" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: {{n.bg}}; color: {{n.fg}}; border-left: 3px solid {{n.bar}}">{{n.label}}</a>
+</sc-for>
 </nav>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-top: 1px solid #2A2D34">
 <div style="width: 36px; height: 36px; border-radius: 999px; background: #3A3D44"></div>
@@ -68,97 +46,43 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 
 <div style="grid-column: span 8; display: flex; flex-direction: column; gap: 16px">
 <div role="tablist" style="display: flex; gap: 6px; border-bottom: 1px solid #E4DED3">
-
-<button type="button" role="tab" style="height: 44px; padding: 0 16px; border: none; background: transparent; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; color: #16181D; border-bottom: 3px solid #C23B22; display: flex; align-items: center; gap: 8px">Waiting for approval<span style="font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #C23B22; color: #FFFFFF">4</span></button>
-
-<button type="button" role="tab" style="height: 44px; padding: 0 16px; border: none; background: transparent; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; color: #5B5F66; border-bottom: 3px solid transparent; display: flex; align-items: center; gap: 8px">Approved<span style="font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #ECEAE6; color: #4A4E55">1</span></button>
-
-<button type="button" role="tab" style="height: 44px; padding: 0 16px; border: none; background: transparent; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; color: #5B5F66; border-bottom: 3px solid transparent; display: flex; align-items: center; gap: 8px">Spam<span style="font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #ECEAE6; color: #4A4E55">1</span></button>
-
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" onClick="{{t.pick}}" style="height: 44px; padding: 0 16px; border: none; background: transparent; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; color: {{t.fg}}; border-bottom: 3px solid {{t.bar}}; display: flex; align-items: center; gap: 8px">{{t.label}}<span style="font-size: 12px; padding: 2px 8px; border-radius: 999px; background: {{t.pillBg}}; color: {{t.pillFg}}">{{t.count}}</span></button>
+</sc-for>
 </div>
 <div style="display: flex; gap: 10px; align-items: center">
 <input type="search" aria-label="Search comments" placeholder="Search comment text, name or article…" style="flex-grow: 1; height: 42px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit; background: #FFFFFF">
 <button type="button" style="height: 42px; padding: 0 16px; border: none; border-radius: 6px; background: #1E6B4F; color: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Approve all shown</button>
 </div>
 
+<sc-for list="{{rows}}" as="c" hint-placeholder-count="5">
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; align-items: center; gap: 10px">
 <div style="width: 36px; height: 36px; border-radius: 999px; background: #D9D3C7"></div>
-<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">[Reader name]</span><span style="font-size: 12px; color: #5B5F66">8 min ago · on <a href="Admin-Editor.html" style="font-weight: 600; color: #16181D; text-decoration: underline">The quiet towns rebuilding their high streets</a></span></div>
-
+<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">{{c.name}}</span><span style="font-size: 12px; color: #5B5F66">{{c.when}} · on <a href="Admin-Editor.html" style="font-weight: 600; color: #16181D; text-decoration: underline">{{c.article}}</a></span></div>
+<sc-if value="{{c.flagged}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #FBEBDD; color: #9A4A0C">{{c.flag}}</span></sc-if>
 </div>
-<p style="margin: 0; font-size: 16px; line-height: 1.55">Our town tried a weekend market last year and it made a real difference. The short leases idea is worth copying.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.55">{{c.text}}</p>
 <div style="display: flex; gap: 8px">
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: #E3F1EA; color: #1E6B4F; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Approve</button>
+<button type="button" onClick="{{c.approve}}" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: #E3F1EA; color: #1E6B4F; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Approve</button>
 <button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Reply as Maldives Business Ledger</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Spam</button>
+<button type="button" onClick="{{c.spam}}" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Spam</button>
 <span style="flex-grow: 1"></span>
 <button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: transparent; color: #B8361E; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Block this reader</button>
 </div>
 </div>
-
-<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; align-items: center; gap: 10px">
-<div style="width: 36px; height: 36px; border-radius: 999px; background: #D9D3C7"></div>
-<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">[Reader name]</span><span style="font-size: 12px; color: #5B5F66">22 min ago · on <a href="Admin-Editor.html" style="font-weight: 600; color: #16181D; text-decoration: underline">What the new housing bill changes for renters</a></span></div>
-
-</div>
-<p style="margin: 0; font-size: 16px; line-height: 1.55">Would love a follow-up on how rents have changed since the bill passed.</p>
-<div style="display: flex; gap: 8px">
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: #E3F1EA; color: #1E6B4F; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Approve</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Reply as Maldives Business Ledger</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Spam</button>
-<span style="flex-grow: 1"></span>
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: transparent; color: #B8361E; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Block this reader</button>
-</div>
-</div>
-
-<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; align-items: center; gap: 10px">
-<div style="width: 36px; height: 36px; border-radius: 999px; background: #D9D3C7"></div>
-<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">[Reader name]</span><span style="font-size: 12px; color: #5B5F66">41 min ago · on <a href="Admin-Editor.html" style="font-weight: 600; color: #16181D; text-decoration: underline">What the new housing bill changes for renters</a></span></div>
-<span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #FBEBDD; color: #9A4A0C">Contains a link</span>
-</div>
-<p style="margin: 0; font-size: 16px; line-height: 1.55">Click here for cheap loans!!! www.example-link…</p>
-<div style="display: flex; gap: 8px">
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: #E3F1EA; color: #1E6B4F; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Approve</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Reply as Maldives Business Ledger</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Spam</button>
-<span style="flex-grow: 1"></span>
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: transparent; color: #B8361E; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Block this reader</button>
-</div>
-</div>
-
-<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; align-items: center; gap: 10px">
-<div style="width: 36px; height: 36px; border-radius: 999px; background: #D9D3C7"></div>
-<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">[Reader name]</span><span style="font-size: 12px; color: #5B5F66">1 hr ago · on <a href="Admin-Editor.html" style="font-weight: 600; color: #16181D; text-decoration: underline">Four-day weeks, one year on</a></span></div>
-
-</div>
-<p style="margin: 0; font-size: 16px; line-height: 1.55">We moved to a four-day week in March. Productivity is the same and nobody wants to go back.</p>
-<div style="display: flex; gap: 8px">
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: #E3F1EA; color: #1E6B4F; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Approve</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Reply as Maldives Business Ledger</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Spam</button>
-<span style="flex-grow: 1"></span>
-<button type="button" style="height: 36px; padding: 0 14px; border: none; border-radius: 6px; background: transparent; color: #B8361E; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Block this reader</button>
-</div>
-</div>
-
+</sc-for>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 40px; text-align: center; font-size: 15px; color: #4A4E55">All caught up — nothing waiting here.</div>
+</sc-if>
 </div>
 
 <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 16px">
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
 <h2 style="margin: 0; font-size: 16px; font-weight: 700">Comment rules</h2>
-
-<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4"><input type="checkbox" checked="" style="width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0"><span><b>New comments wait for approval</b><br><span style="color: #5B5F66">Nothing appears on the site until an editor approves it.</span></span></label>
-
-<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4"><input type="checkbox" checked="" style="width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0"><span><b>Hold comments with links</b><br><span style="color: #5B5F66">Stops most spam before it reaches the queue.</span></span></label>
-
-<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4"><input type="checkbox" checked="" style="width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0"><span><b>Trust returning readers</b><br><span style="color: #5B5F66">Readers with 3 approved comments are published straight away.</span></span></label>
-
-<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4"><input type="checkbox" checked="" style="width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0"><span><b>Close comments after 14 days</b><br><span style="color: #5B5F66">Older articles stop taking new comments.</span></span></label>
-
+<sc-for list="{{rules}}" as="r" hint-placeholder-count="4">
+<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4"><input type="checkbox" checked style="width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0"><span><b>{{r.t}}</b><br><span style="color: #5B5F66">{{r.d}}</span></span></label>
+</sc-for>
 </div>
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
 <label for="cm-words" style="font-size: 16px; font-weight: 700">Blocked words</label>
@@ -171,6 +95,43 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </div>
 </div>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const accent = this.props.accent ?? '#C23B22';
+const s = this.state || {};
+const tab = s.tab || 'Waiting';
+const moved = s.moved || {};
+const nav = [['Overview','Admin-Overview.html'],['Articles','Admin-Articles.html'],['New article','Admin-Editor.html'],['Upload video','Admin-Video.html'],['Homepage layout','Admin-Homepage.html'],['Media library','Admin-Media.html'],['Statistics','Admin-Stats.html'],['Ads','Admin-Ads.html'],['Comments','Admin-Comments.html'],['Categories & tags','Admin-Categories.html'],['Authors','Admin-Authors.html'],['Users & roles','Admin-Users.html'],['Settings','Admin-Settings.html']];
+const active = 'Comments';
+const base = [
+{ id: 1, name: '[Reader name]', when: '8 min ago', article: 'The quiet towns rebuilding their high streets', text: 'Our town tried a weekend market last year and it made a real difference. The short leases idea is worth copying.', st: 'Waiting', flag: '' },
+{ id: 2, name: '[Reader name]', when: '22 min ago', article: 'What the new housing bill changes for renters', text: 'Would love a follow-up on how rents have changed since the bill passed.', st: 'Waiting', flag: '' },
+{ id: 3, name: '[Reader name]', when: '41 min ago', article: 'What the new housing bill changes for renters', text: 'Click here for cheap loans!!! www.example-link…', st: 'Waiting', flag: 'Contains a link' },
+{ id: 4, name: '[Reader name]', when: '1 hr ago', article: 'Four-day weeks, one year on', text: 'We moved to a four-day week in March. Productivity is the same and nobody wants to go back.', st: 'Waiting', flag: '' },
+{ id: 5, name: '[Reader name]', when: '2 hr ago', article: 'Inside the workshop teaching teenagers to build satellites', text: 'Brilliant story. How can schools get involved?', st: 'Approved', flag: '' },
+{ id: 6, name: '[Reader name]', when: '3 hr ago', article: 'Balcony gardens that survive the monsoon', text: 'Buy followers now, best price guaranteed', st: 'Spam', flag: 'Spam filter' }
+].map(c => Object.assign({}, c, { st: moved[c.id] || c.st }));
+const count = (k) => base.filter(c => c.st === k).length;
+const rows = base.filter(c => c.st === tab).map(c => ({ ...c, flagged: !!c.flag,
+approve: () => this.setState({ moved: Object.assign({}, moved, { [c.id]: 'Approved' }) }),
+spam: () => this.setState({ moved: Object.assign({}, moved, { [c.id]: 'Spam' }) }) }));
+return {
+accent,
+navItems: nav.map(([label, href]) => ({ label, href, bg: label === active ? '#2A2D34' : 'transparent', fg: label === active ? '#FFFFFF' : '#C9C4BA', bar: label === active ? accent : 'transparent' })),
+tabs: ['Waiting', 'Approved', 'Spam'].map(k => ({ label: k === 'Waiting' ? 'Waiting for approval' : k, count: count(k), pick: () => this.setState({ tab: k }), fg: k === tab ? '#16181D' : '#5B5F66', bar: k === tab ? accent : 'transparent', pillBg: k === tab ? accent : '#ECEAE6', pillFg: k === tab ? '#FFFFFF' : '#4A4E55' })),
+rows, empty: rows.length === 0,
+rules: [
+{ t: 'New comments wait for approval', d: 'Nothing appears on the site until an editor approves it.' },
+{ t: 'Hold comments with links', d: 'Stops most spam before it reaches the queue.' },
+{ t: 'Trust returning readers', d: 'Readers with 3 approved comments are published straight away.' },
+{ t: 'Close comments after 14 days', d: 'Older articles stop taking new comments.' }
+]
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22"},"$preview":{"width":1440,"height":1240}});
+</script>
 </body>
 </html>

@@ -13,9 +13,11 @@ body{margin:0;font-family:'Faruma','Noto Sans Thaana',sans-serif;background:#F6F
 a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 .hs::-webkit-scrollbar{display:none}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div dir="rtl" style="width: 390px; min-height: 3700px; box-sizing: border-box; background: #F6F3EE; display: flex; flex-direction: column; font-family: 'Faruma', 'Noto Sans Thaana', sans-serif">
 
@@ -23,7 +25,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="padding: 12px 16px 0">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 12px; color: #5B5F66; line-height: 1.4">އިޢުލާން · [ފަރާތުގެ ނަން]</span>
-<div style="height: 100px; border-radius: 6px; background: #E4DED3; display: flex; align-items: center; justify-content: center">
+<div style="height: 100px; border-radius: 6px; background: {{ads.top}}; display: flex; align-items: center; justify-content: center">
 <div style="background: #FFFFFF; border-radius: 6px; padding: 6px 14px; display: flex; flex-direction: column; align-items: center; gap: 1px">
 <span dir="ltr" style="font-size: 14px; font-weight: 700; color: #16181D; font-family: system-ui, sans-serif">Top Banner</span>
 <span dir="ltr" style="font-size: 11px; color: #4A4E55; font-family: system-ui, sans-serif">All pages · JPEG, PNG, GIF · 512 KB</span>
@@ -35,32 +37,24 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <!-- Header -->
 <header style="margin-top: 8px; border-bottom: 1px solid #16181D; display: flex; flex-direction: column">
 <div style="height: 60px; padding: 0 6px; display: flex; align-items: center; justify-content: space-between">
-<div style="width: 104px; display: flex"><button type="button" aria-label="މެނޫ" style="width: 44px; height: 44px; border: none; background: transparent; color: #16181D; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button></div>
+<div style="width: 104px; display: flex"><button type="button" aria-label="މެނޫ" onClick="{{toggleMenu}}" style="width: 44px; height: 44px; border: none; background: transparent; color: #16181D; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button></div>
 <a href="DV-Mobile-Home.html" dir="ltr" style="font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1"><span dir="rtl" style="display: inline-flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.25; white-space: nowrap; letter-spacing: 0"><span style="font-family: Faruma, 'Noto Sans Thaana', sans-serif; font-size: 22px; font-weight: 700">ބިޒްނަސް ލެޖާ</span></span></a>
 <div style="width: 104px; display: flex; justify-content: flex-end; align-items: center; gap: 2px">
 <a href="Mobile-Category.html" dir="ltr" style="height: 32px; padding: 0 10px; border: 1px solid #BDB6A8; border-radius: 999px; display: flex; align-items: center; font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700">EN</a>
 <button type="button" aria-label="ހޯދާ" style="width: 44px; height: 44px; border: none; background: transparent; color: #16181D; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></button>
 </div>
 </div>
-
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<nav style="border-top: 1px solid #D9D3C7; padding: 8px 16px 16px; display: flex; flex-direction: column">
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="8">
+<a href="{{n.href}}" style="padding: 12px 0; border-bottom: 1px solid #E4DED3; font-size: 18px; font-weight: 700">{{n.label}}</a>
+</sc-for>
+</nav>
+</sc-if>
 <nav class="hs" style="display: flex; gap: 8px; padding: 0 16px 12px; overflow-x: auto; scrollbar-width: none; white-space: nowrap">
-
-<a href="DV-Mobile-Home.html" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ފުރަތަމަ ސަފުހާ</a>
-
-<a href="#" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ވިޔަފާރި</a>
-
-<a href="#" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ދަތުރު</a>
-
-<a href="DV-Mobile-Category.html" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #16181D; color: #FFFFFF">ޓެކް</a>
-
-<a href="#" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ސިޔާސީ</a>
-
-<a href="#" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ދިރިއުޅުން</a>
-
-<a href="#" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ރިޕޯޓް</a>
-
-<a href="#" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: #E4DED3; color: #16181D">ޚިޔާލު</a>
-
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="8">
+<a href="{{n.href}}" style="flex-shrink: 0; padding: 6px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; background: {{n.bg}}; color: {{n.fg}}">{{n.label}}</a>
+</sc-for>
 </nav>
 </header>
 
@@ -72,58 +66,34 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </div>
 <div class="hs" style="display: flex; gap: 8px; padding: 14px 16px 0; overflow-x: auto; scrollbar-width: none">
 <a href="DV-Mobile-Category.html" style="flex-shrink: 0; background: #16181D; color: #FFFFFF; border-radius: 999px; padding: 6px 16px; font-size: 15px; font-weight: 700">ހުރިހާ</a>
-
-<a href="DV-Mobile-Category.html" style="flex-shrink: 0; border: 1px solid #BDB6A8; border-radius: 999px; padding: 5px 16px; font-size: 15px; font-weight: 700">ގެޖެޓް</a>
-
-<a href="DV-Mobile-Category.html" style="flex-shrink: 0; border: 1px solid #BDB6A8; border-radius: 999px; padding: 5px 16px; font-size: 15px; font-weight: 700">އެޕް</a>
-
-<a href="DV-Mobile-Category.html" style="flex-shrink: 0; border: 1px solid #BDB6A8; border-radius: 999px; padding: 5px 16px; font-size: 15px; font-weight: 700">ސައިންސް</a>
-
-<a href="DV-Mobile-Category.html" style="flex-shrink: 0; border: 1px solid #BDB6A8; border-radius: 999px; padding: 5px 16px; font-size: 15px; font-weight: 700">ސްޓާޓްއަޕް</a>
-
+<sc-for list="{{subcats}}" as="sc" hint-placeholder-count="4">
+<a href="DV-Mobile-Category.html" style="flex-shrink: 0; border: 1px solid #BDB6A8; border-radius: 999px; padding: 5px 16px; font-size: 15px; font-weight: 700">{{sc}}</a>
+</sc-for>
 </div>
 
 <!-- Feature -->
 <a href="DV-Mobile-Article.html" style="margin: 20px 16px 0; height: 330px; border-radius: 8px; background: #3B4A63; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; box-sizing: border-box; color: #FFFFFF; gap: 8px">
-<span style="align-self: flex-start; background: #C23B22; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 3px">ޚާއްޞަ</span>
+<span style="align-self: flex-start; background: {{accent}}; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 3px">ޚާއްޞަ</span>
 <span style="font-size: 23px; line-height: 1.6; font-weight: 700">ޒުވާނުން ސެޓަލައިޓް ހަދަން ދަސްކުރާ ވޯކްޝޮޕެއް</span>
 <span style="font-size: 13px; color: #D6D2CA">ލިޔުނީ: [ލިޔުންތެރިޔާ] · 7 މިނިޓު</span>
 </a>
 
 <!-- 2×2 -->
 <div style="padding: 24px 16px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px">
-
+<sc-for list="{{small}}" as="s" hint-placeholder-count="4">
 <a href="DV-Mobile-Article.html" style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 110px; border-radius: 6px; background: #4A5A66"></div>
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">ގެޖެޓް</span>
-<span style="font-size: 15px; font-weight: 700; line-height: 1.65">ރިޕެއާކުރެވޭ ފޯނުތައް އަލުން މަގުބޫލުވަނީ</span>
+<div style="height: 110px; border-radius: 6px; background: {{s.tone}}"></div>
+<span style="font-size: 13px; font-weight: 700; color: {{accent}}">{{s.cat}}</span>
+<span style="font-size: 15px; font-weight: 700; line-height: 1.65">{{s.title}}</span>
 </a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 110px; border-radius: 6px; background: #5A4636"></div>
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">އެޕް</span>
-<span style="font-size: 15px; font-weight: 700; line-height: 1.65">އެޑިޓަރުން ބޭނުންކުރާ ފަސް އެޕް</span>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 110px; border-radius: 6px; background: #34506B"></div>
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">ސައިންސް</span>
-<span style="font-size: 15px; font-weight: 700; line-height: 1.65">ތަރި ބަލާ ކުލަބަކަށް އާ ދޫދިއެއް ފެނިއްޖެ</span>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 110px; border-radius: 6px; background: #556B4A"></div>
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">ސްޓާޓްއަޕް</span>
-<span style="font-size: 15px; font-weight: 700; line-height: 1.65">ކުދި ސްޓޫޑިއޯތަކުން އަމިއްލަ ޓޫލް ހަދަނީ</span>
-</a>
-
+</sc-for>
 </div>
 
 <!-- AD: Sub-Page Banner -->
 <div style="padding: 32px 16px 0">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 12px; color: #5B5F66; line-height: 1.4">އިޢުލާން · [ފަރާތުގެ ނަން]</span>
-<div style="height: 100px; border-radius: 6px; background: #E4DED3; display: flex; align-items: center; justify-content: center">
+<div style="height: 100px; border-radius: 6px; background: {{ads.subpage}}; display: flex; align-items: center; justify-content: center">
 <div style="background: #FFFFFF; border-radius: 6px; padding: 6px 14px; display: flex; flex-direction: column; align-items: center; gap: 1px">
 <span dir="ltr" style="font-size: 14px; font-weight: 700; color: #16181D; font-family: system-ui, sans-serif">Sub-Page Banner</span>
 <span dir="ltr" style="font-size: 11px; color: #4A4E55; font-family: system-ui, sans-serif">Category pages only · 512 KB</span>
@@ -138,87 +108,15 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <h2 style="margin: 0; font-size: 23px; font-weight: 700">ހުރިހާ ޓެކް ޚަބަރެއް</h2>
 <span style="flex-grow: 1; height: 1px; background: #16181D"></span>
 </div>
-
+<sc-for list="{{stories}}" as="st" hint-placeholder-count="10">
 <a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #3B4A63"></div>
+<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: {{st.tone}}"></div>
 <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ބަސްތައް ހިންގުމަށް ބޭނުންކުރާ އޯޕަން ސޯސް ޓޫލްތައް</span>
-<span style="font-size: 13px; color: #5B5F66">6 މިނިޓު</span>
+<span style="font-size: 16px; font-weight: 700; line-height: 1.65">{{st.title}}</span>
+<span style="font-size: 13px; color: #5B5F66">{{st.read}}</span>
 </div>
 </a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #556B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">އީ-ވޭސްޓް ކުޑަކުރުމަށް ރިޕެއާ ކެފޭތައް</span>
-<span style="font-size: 13px; color: #5B5F66">5 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #5B3B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">އާ ޕްރައިވެސީ ޤަވާޢިދަށް ލުއި ގައިޑެއް</span>
-<span style="font-size: 13px; color: #5B5F66">7 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #4A5A66"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ކުރިއަށް އޮތް ލެޕްޓޮޕް މޮޑިއުލަރ ވާނީ ކީއްވެ؟</span>
-<span style="font-size: 13px; color: #5B5F66">4 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #2F5A5E"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ކުދި ރަށްތަކަށް ސޯލާ ކިޓް: ޓެސްޓުކޮށް ބަލައިފި</span>
-<span style="font-size: 13px; color: #5B5F66">8 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #6A5343"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ކޯޑިންގ ކުލަބުތަކަށް އައި ބަދަލު</span>
-<span style="font-size: 13px; color: #5B5F66">6 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #34506B"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ސައިކަލު މަގުތަކުގެ ޗާޓު ހަދާ ވޮލަންޓިއަރުން</span>
-<span style="font-size: 13px; color: #5B5F66">5 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #5A4636"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ސިގްނަލް ދެރަ ތަންތަނަށް އޮފްލައިން އެޕްތައް</span>
-<span style="font-size: 13px; color: #5B5F66">6 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #3B4A63"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ގޭގެ ނެޓްވޯކަށް ފެށުމުގެ ގައިޑެއް</span>
-<span style="font-size: 13px; color: #5B5F66">9 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-Mobile-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #7A5A3C"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 16px; font-weight: 700; line-height: 1.65">ކަރުދާހުގެ ނޯޓު ފޮތް އަލުން</span>
-<span style="font-size: 13px; color: #5B5F66">4 މިނިޓު</span>
-</div>
-</a>
-
+</sc-for>
 <a href="#" style="margin-top: 20px; height: 48px; border: 2px solid #16181D; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px">އިތުރު ޚަބަރު</a>
 </div>
 
@@ -231,6 +129,44 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="border-top: 1px solid #3A3D44; padding-top: 16px; font-size: 13px">© 2026 ބިޒްނަސް ލެޖާ. ހުރިހާ ޙައްޤެއް ލިބިގެންވޭ.</div>
 </footer>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const on = this.props.showAdColors ?? true;
+const c = (hex) => on ? hex : '#E4DED3';
+const open = !!(this.state && this.state.menuOpen);
+const nav = [['ފުރަތަމަ ސަފުހާ', 'DV-Mobile-Home.html'], ['ވިޔަފާރި', '#'], ['ދަތުރު', '#'], ['ޓެކް', 'DV-Mobile-Category.html'], ['ސިޔާސީ', '#'], ['ދިރިއުޅުން', '#'], ['ރިޕޯޓް', '#'], ['ޚިޔާލު', '#']];
+const act = 'ޓެކް';
+return {
+accent: this.props.accent ?? '#C23B22',
+menuOpen: open,
+toggleMenu: () => this.setState({ menuOpen: !open }),
+navItems: nav.map(([label, href]) => ({ label, href, bg: label === act ? '#16181D' : '#E4DED3', fg: label === act ? '#FFFFFF' : '#16181D' })),
+ads: { top: c('#6FB9DA'), subpage: c('#62A866') },
+subcats: ['ގެޖެޓް', 'އެޕް', 'ސައިންސް', 'ސްޓާޓްއަޕް'],
+small: [
+{ cat: 'ގެޖެޓް', title: 'ރިޕެއާކުރެވޭ ފޯނުތައް އަލުން މަގުބޫލުވަނީ', tone: '#4A5A66' },
+{ cat: 'އެޕް', title: 'އެޑިޓަރުން ބޭނުންކުރާ ފަސް އެޕް', tone: '#5A4636' },
+{ cat: 'ސައިންސް', title: 'ތަރި ބަލާ ކުލަބަކަށް އާ ދޫދިއެއް ފެނިއްޖެ', tone: '#34506B' },
+{ cat: 'ސްޓާޓްއަޕް', title: 'ކުދި ސްޓޫޑިއޯތަކުން އަމިއްލަ ޓޫލް ހަދަނީ', tone: '#556B4A' }
+],
+stories: [
+{ title: 'ބަސްތައް ހިންގުމަށް ބޭނުންކުރާ އޯޕަން ސޯސް ޓޫލްތައް', read: '6 މިނިޓު', tone: '#3B4A63' },
+{ title: 'އީ-ވޭސްޓް ކުޑަކުރުމަށް ރިޕެއާ ކެފޭތައް', read: '5 މިނިޓު', tone: '#556B4A' },
+{ title: 'އާ ޕްރައިވެސީ ޤަވާޢިދަށް ލުއި ގައިޑެއް', read: '7 މިނިޓު', tone: '#5B3B4A' },
+{ title: 'ކުރިއަށް އޮތް ލެޕްޓޮޕް މޮޑިއުލަރ ވާނީ ކީއްވެ؟', read: '4 މިނިޓު', tone: '#4A5A66' },
+{ title: 'ކުދި ރަށްތަކަށް ސޯލާ ކިޓް: ޓެސްޓުކޮށް ބަލައިފި', read: '8 މިނިޓު', tone: '#2F5A5E' },
+{ title: 'ކޯޑިންގ ކުލަބުތަކަށް އައި ބަދަލު', read: '6 މިނިޓު', tone: '#6A5343' },
+{ title: 'ސައިކަލު މަގުތަކުގެ ޗާޓު ހަދާ ވޮލަންޓިއަރުން', read: '5 މިނިޓު', tone: '#34506B' },
+{ title: 'ސިގްނަލް ދެރަ ތަންތަނަށް އޮފްލައިން އެޕްތައް', read: '6 މިނިޓު', tone: '#5A4636' },
+{ title: 'ގޭގެ ނެޓްވޯކަށް ފެށުމުގެ ގައިޑެއް', read: '9 މިނިޓު', tone: '#3B4A63' },
+{ title: 'ކަރުދާހުގެ ނޯޓު ފޮތް އަލުން', read: '4 މިނިޓު', tone: '#7A5A3C' }
+]
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22","options":["#C23B22","#1F5FA8","#1E7A5A","#B3560E"]},"showAdColors":{"editor":"boolean","default":true},"$preview":{"width":390,"height":3700}});
+</script>
 </body>
 </html>

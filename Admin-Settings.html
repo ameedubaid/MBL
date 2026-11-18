@@ -11,9 +11,11 @@
 body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;background:#F4F2EE;color:#16181D}
 a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div style="width: 1440px; min-height: 1240px; display: flex; background: #F4F2EE">
 
@@ -24,33 +26,9 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8F98">Admin</span>
 </a>
 <nav style="display: flex; flex-direction: column; gap: 2px">
-
-<a href="Admin-Overview.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Overview</a>
-
-<a href="Admin-Articles.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Articles</a>
-
-<a href="Admin-Editor.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">New article</a>
-
-<a href="Admin-Video.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Upload video</a>
-
-<a href="Admin-Homepage.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Homepage layout</a>
-
-<a href="Admin-Media.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Media library</a>
-
-<a href="Admin-Stats.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Statistics</a>
-
-<a href="Admin-Ads.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Ads</a>
-
-<a href="Admin-Comments.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Comments</a>
-
-<a href="Admin-Categories.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Categories &amp; tags</a>
-
-<a href="Admin-Authors.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Authors</a>
-
-<a href="Admin-Users.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Users &amp; roles</a>
-
-<a href="Admin-Settings.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: #2A2D34; color: #FFFFFF; border-left: 3px solid #C23B22">Settings</a>
-
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="13">
+<a href="{{n.href}}" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: {{n.bg}}; color: {{n.fg}}; border-left: 3px solid {{n.bar}}">{{n.label}}</a>
+</sc-for>
 </nav>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-top: 1px solid #2A2D34">
 <div style="width: 36px; height: 36px; border-radius: 999px; background: #3A3D44"></div>
@@ -67,25 +45,14 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="padding: 24px 32px 40px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px">
 
 <nav aria-label="Settings sections" style="display: flex; flex-direction: column; gap: 4px">
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: #FFFFFF; color: #16181D">General</button>
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: transparent; color: #16181D">Languages</button>
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: transparent; color: #16181D">Social links &amp; contact</button>
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: transparent; color: #16181D">Newsletter</button>
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: transparent; color: #16181D">Search &amp; sharing</button>
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: transparent; color: #16181D">Integrations</button>
-
-<button type="button" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: transparent; color: #16181D">Backups &amp; security</button>
-
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="7">
+<button type="button" onClick="{{t.pick}}" style="height: 42px; padding: 0 14px; border: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; background: {{t.bg}}; color: #16181D">{{t.label}}</button>
+</sc-for>
 </nav>
 
 <div style="display: flex; flex-direction: column; gap: 16px">
 
+<sc-if value="{{is.general}}" hint-placeholder-val="{{true}}">
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
 <h2 style="margin: 0; font-size: 18px; font-weight: 700">Site identity</h2>
 <div style="display: flex; gap: 20px; align-items: center">
@@ -100,14 +67,191 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <span style="font-size: 13px; font-weight: 700; color: #4A4E55">Accent colour <span style="font-weight: 500; color: #5B5F66">— section labels, links and buttons on the site</span></span>
-<div style="display: flex; gap: 10px"><button type="button" aria-label="Red" style="width: 40px; height: 40px; border-radius: 999px; border: 3px solid #16181D; background: #C23B22; cursor: pointer"></button><button type="button" aria-label="Blue" style="width: 40px; height: 40px; border-radius: 999px; border: 3px solid #FFFFFF; background: #1F5FA8; cursor: pointer"></button><button type="button" aria-label="Green" style="width: 40px; height: 40px; border-radius: 999px; border: 3px solid #FFFFFF; background: #1E7A5A; cursor: pointer"></button><button type="button" aria-label="Orange" style="width: 40px; height: 40px; border-radius: 999px; border: 3px solid #FFFFFF; background: #B3560E; cursor: pointer"></button></div>
+<div style="display: flex; gap: 10px"><sc-for list="{{swatches}}" as="sw" hint-placeholder-count="4"><button type="button" aria-label="{{sw.name}}" onClick="{{sw.pick}}" style="width: 40px; height: 40px; border-radius: 999px; border: 3px solid {{sw.ring}}; background: {{sw.hex}}; cursor: pointer"></button></sc-for></div>
 </div>
 </div>
+</sc-if>
+
+<sc-if value="{{is.languages}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Languages</h2>
+<div style="display: flex; align-items: center; gap: 14px; padding: 14px; border: 1px solid #E4DED3; border-radius: 8px"><span style="font-size: 16px; font-weight: 700; flex-grow: 1">English</span><span style="font-size: 13px; color: #4A4E55">[your-domain]/en</span><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #E3F1EA; color: #1E6B4F">Live</span></div>
+<div style="display: flex; align-items: center; gap: 14px; padding: 14px; border: 1px solid #E4DED3; border-radius: 8px"><span style="font-size: 16px; font-weight: 700; flex-grow: 1">Dhivehi (right-to-left)</span><span style="font-size: 13px; color: #4A4E55">[your-domain]/dv</span><span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #ECEAE6; color: #4A4E55">Coming later</span></div>
+<span style="font-size: 13px; color: #5B5F66">Editors can already write Dhivehi drafts. They go live when the Dhivehi site is switched on.</span>
+</div>
+</sc-if>
+
+<sc-if value="{{is.social}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Social links &amp; contact</h2>
+<span style="font-size: 13px; color: #5B5F66">Shown in the header icons and the footer.</span>
+<sc-for list="{{social}}" as="so" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 12px; align-items: center"><label style="font-size: 14px; font-weight: 700">{{so.label}}</label><input type="text" placeholder="{{so.ph}}" aria-label="{{so.label}}" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit"></div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{is.newsletter}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Morning briefing newsletter</h2>
+<span style="font-size: 14px; color: #4A4E55">The sign-up box on the homepage feeds this list.</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<div style="border-radius: 8px; background: #F4F2EE; padding: 14px"><div style="font-size: 24px; font-weight: 700">[2,340]</div><div style="font-size: 13px; color: #4A4E55">Subscribers</div></div>
+<div style="border-radius: 8px; background: #F4F2EE; padding: 14px"><div style="font-size: 24px; font-weight: 700">7:00</div><div style="font-size: 13px; color: #4A4E55">Send time, weekdays</div></div>
+<div style="border-radius: 8px; background: #F4F2EE; padding: 14px"><div style="font-size: 24px; font-weight: 700">5</div><div style="font-size: 13px; color: #4A4E55">Stories per email</div></div>
+</div>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 14px"><input type="checkbox" checked style="width: 18px; height: 18px"> Fill the email automatically from the homepage main story and editor’s picks</label>
+</div>
+</sc-if>
+
+<sc-if value="{{is.integrations}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Auto-post to social media</h2>
+<span style="font-size: 14px; color: #4A4E55">When an article is published, it is posted to your Facebook Page and X account automatically. Editors can switch it off for a single article in the editor.</span>
+</div>
+
+<sc-for list="{{autoAccounts}}" as="ac" hint-placeholder-count="2">
+<div style="border: 1px solid #E4DED3; border-radius: 10px; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: #FAF8F5; border-bottom: 1px solid #E4DED3">
+<div style="width: 40px; height: 40px; border-radius: 8px; background: {{ac.color}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; font-family: Arial, sans-serif">{{ac.mark}}</div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+<span style="font-size: 16px; font-weight: 700">{{ac.name}}</span>
+<span style="font-size: 13px; color: #4A4E55">{{ac.account}}</span>
+</div>
+<span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: {{ac.connBg}}; color: {{ac.connFg}}">{{ac.connText}}</span>
+<button type="button" onClick="{{ac.connToggle}}" style="height: 34px; padding: 0 12px; border: 1px solid {{ac.connBtnBorder}}; border-radius: 6px; background: {{ac.connBtnBg}}; color: {{ac.connBtnFg}}; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">{{ac.connAction}}</button>
+</div>
+
+<sc-if value="{{ac.notConnected}}" hint-placeholder-val="{{false}}">
+<div style="padding: 18px; font-size: 14px; color: #4A4E55">Not connected. Click <b>Connect</b> and sign in to {{ac.name}} to let the site post for you.</div>
+</sc-if>
+<sc-if value="{{ac.connected}}" hint-placeholder-val="{{true}}">
+<div style="padding: 18px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<button type="button" role="switch" aria-checked="{{ac.on}}" aria-label="Auto-post to {{ac.name}}" onClick="{{ac.toggle}}" style="width: 44px; height: 24px; border-radius: 999px; border: none; padding: 2px; cursor: pointer; background: {{ac.trackBg}}; display: flex; justify-content: {{ac.knobPos}}"><span style="width: 20px; height: 20px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 2px rgba(0,0,0,0.25)"></span></button>
+<span style="font-size: 15px; font-weight: 700">Post automatically when an article is published</span>
+<span style="margin-left: auto; font-size: 13px; color: #5B5F66">{{ac.stateText}}</span>
+</div>
+
+<sc-if value="{{ac.on}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; font-weight: 700; color: #4A4E55">Languages</span><div style="display: flex; gap: 16px; height: 40px; align-items: center"><label style="display: flex; align-items: center; gap: 6px; font-size: 14px"><input type="checkbox" checked style="width: 16px; height: 16px"> English</label><label style="display: flex; align-items: center; gap: 6px; font-size: 14px"><input type="checkbox" checked style="width: 16px; height: 16px"> Dhivehi</label></div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; font-weight: 700; color: #4A4E55">When to post</span><select aria-label="When to post on {{ac.name}}" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 10px; font-size: 14px; font-family: inherit; background: #FFFFFF"><option>Right away</option><option>10 minutes after publishing</option><option>Only if the editor ticks the box</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2"><span style="font-size: 13px; font-weight: 700; color: #4A4E55">Categories</span><div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{ac.cats}}" as="c" hint-placeholder-count="8"><span style="font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 999px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.fg}}">{{c.label}}</span></sc-for></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 700; color: #4A4E55">Post text <span style="font-weight: 500; color: #5B5F66">— {{ac.limitNote}}</span></span>
+<textarea aria-label="Post text for {{ac.name}}" rows="3" style="border: 1px solid #D9D3C7; border-radius: 6px; padding: 10px 12px; font-size: 14px; font-family: inherit; resize: vertical">{{ac.template}}</textarea>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center"><span style="font-size: 12px; color: #5B5F66">Insert:</span><sc-for list="{{tokens}}" as="tk" hint-placeholder-count="4"><button type="button" data-insert="{{tk}}" style="height: 26px; padding: 0 8px; border: 1px solid #D9D3C7; border-radius: 4px; background: #FFFFFF; font-family: ui-monospace, monospace; font-size: 12px; cursor: pointer">{{tk}}</button></sc-for></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 700; color: #4A4E55">Preview</span>
+<div style="border: 1px solid #E4DED3; border-radius: 10px; overflow: hidden; background: #FFFFFF">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px"><div style="width: 28px; height: 28px; border-radius: 999px; background: #16181D"></div><div style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">{{ac.previewName}}</span><span style="font-size: 11px; color: #5B5F66">Just now</span></div></div>
+<div style="padding: 0 12px 10px; font-size: 13px; line-height: 1.4; white-space: pre-line">{{ac.previewText}}</div>
+<div style="height: 120px; background: #D9D3C7"></div>
+<div style="padding: 8px 12px; background: #F4F2EE"><div style="font-size: 11px; color: #5B5F66; text-transform: uppercase">[your-domain]</div><div style="font-size: 13px; font-weight: 700">Resort bookings climb 18% ahead of peak season</div></div>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</sc-for>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 700">Recent auto-posts</span>
+<div style="border: 1px solid #E4DED3; border-radius: 8px">
+<sc-for list="{{postLog}}" as="pl" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 90px minmax(0, 1fr) 110px 90px; gap: 12px; align-items: center; padding: 10px 14px; border-top: 1px solid {{pl.line}}; font-size: 14px">
+<span style="font-weight: 700">{{pl.where}}</span>
+<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{pl.title}}</span>
+<span style="font-size: 13px; color: #5B5F66">{{pl.when}}</span>
+<span style="font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 999px; text-align: center; background: {{pl.bg}}; color: {{pl.fg}}">{{pl.status}}</span>
+</div>
+</sc-for>
+</div>
+<span style="font-size: 12px; color: #5B5F66">If a post fails, open it here to try again. Failed posts are also flagged on the Overview screen.</span>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">Other connections</h2>
+<sc-for list="{{otherConns}}" as="oc" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 14px; padding: 14px; border: 1px solid #E4DED3; border-radius: 8px">
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1"><span style="font-size: 15px; font-weight: 700">{{oc.name}}</span><span style="font-size: 13px; color: #4A4E55">{{oc.desc}}</span></div>
+<span style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: {{oc.bg}}; color: {{oc.fg}}">{{oc.status}}</span>
+<button type="button" onClick="{{oc.toggle}}" style="height: 34px; padding: 0 12px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">{{oc.action}}</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{is.other}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">{{tabName}}</h2>
+<span style="font-size: 14px; color: #4A4E55">{{otherText}}</span>
+</div>
+</sc-if>
 
 </div>
 </div>
 </div>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const accent = s.accent || (this.props.accent ?? '#C23B22');
+const tab = s.tab || 'General';
+const nav = [['Overview','Admin-Overview.html'],['Articles','Admin-Articles.html'],['New article','Admin-Editor.html'],['Upload video','Admin-Video.html'],['Homepage layout','Admin-Homepage.html'],['Media library','Admin-Media.html'],['Statistics','Admin-Stats.html'],['Ads','Admin-Ads.html'],['Comments','Admin-Comments.html'],['Categories & tags','Admin-Categories.html'],['Authors','Admin-Authors.html'],['Users & roles','Admin-Users.html'],['Settings','Admin-Settings.html']];
+const active = 'Settings';
+const other = {
+'Search & sharing': 'Default share image, Google site verification, and how headlines appear in search results.',
+'Backups & security': 'Daily backups, two-step login for everyone, and a log of who changed what.'
+};
+const list = ['General', 'Languages', 'Social links & contact', 'Newsletter', 'Search & sharing', 'Integrations', 'Backups & security'];
+return {
+accent,
+navItems: nav.map(([label, href]) => ({ label, href, bg: label === active ? '#2A2D34' : 'transparent', fg: label === active ? '#FFFFFF' : '#C9C4BA', bar: label === active ? accent : 'transparent' })),
+tabs: list.map(t => ({ label: t, pick: () => this.setState({ tab: t }), bg: t === tab ? '#FFFFFF' : 'transparent' })),
+is: { general: tab === 'General', languages: tab === 'Languages', social: tab === 'Social links & contact', newsletter: tab === 'Newsletter', integrations: tab === 'Integrations', other: !!other[tab] },
+autoAccounts: [
+{ key: 'fb', name: 'Facebook Page', mark: 'f', color: '#1877F2', account: 'Maldives Business Ledger · facebook.com/[page]', previewName: 'Maldives Business Ledger', limitNote: 'shown above the link preview', template: '{headline}\n\nRead more: {link}', previewText: 'Resort bookings climb 18% ahead of peak season\n\nRead more: [your-domain]/…' },
+{ key: 'x', name: 'X (Twitter)', mark: 'X', color: '#000000', account: '@[handle]', previewName: '@[handle]', limitNote: '280 characters max; the link counts as 23', template: '{headline} {link} {hashtags}', previewText: 'Resort bookings climb 18% ahead of peak season [your-domain]/… #Maldives #Tourism' }
+].map(a => {
+const on = s[a.key + 'Auto'] !== false;
+const picked = a.key === 'fb' ? ['Business', 'Travel', 'Tech', 'Politics', 'Lifestyle', 'Report', 'Opinion'] : ['Business', 'Travel', 'Politics', 'Report'];
+const connected = s[a.key + 'Conn'] !== false;
+return { ...a, connected, notConnected: !connected, connText: connected ? 'Connected' : 'Not connected', connBg: connected ? '#E3F1EA' : '#ECEAE6', connFg: connected ? '#1E6B4F' : '#4A4E55', connAction: connected ? 'Disconnect' : 'Connect', connBtnBg: connected ? '#FFFFFF' : '#16181D', connBtnFg: connected ? '#16181D' : '#FFFFFF', connBtnBorder: connected ? '#D9D3C7' : '#16181D', connToggle: () => this.setState({ [a.key + 'Conn']: !connected }), on, toggle: () => this.setState({ [a.key + 'Auto']: !on }), trackBg: on ? accent : '#C9C4BA', knobPos: on ? 'flex-end' : 'flex-start', stateText: on ? 'On' : 'Off — nothing is posted',
+cats: ['Business', 'Travel', 'Tech', 'Politics', 'Lifestyle', 'Report', 'Opinion', 'Videos'].map(label => { const p = picked.includes(label); return { label, bg: p ? '#16181D' : '#FFFFFF', fg: p ? '#FFFFFF' : '#4A4E55', border: p ? '#16181D' : '#D9D3C7' }; }) };
+}),
+tokens: ['{headline}', '{link}', '{category}', '{hashtags}'],
+postLog: [
+['Facebook', 'Resort bookings climb 18% ahead of peak season', '12 min ago', 'Posted'],
+['X', 'Resort bookings climb 18% ahead of peak season', '12 min ago', 'Posted'],
+['Facebook', 'MMA holds policy rate steady for third quarter', '3 hours ago', 'Posted'],
+['X', 'New seaplane terminal opens at Velana', '5 hours ago', 'Failed']
+].map(([where, title, when, status], i) => ({ where, title, when, status, line: i === 0 ? 'transparent' : '#EFEAE2', bg: status === 'Posted' ? '#E3F1EA' : '#FBE7E3', fg: status === 'Posted' ? '#1E6B4F' : '#A3301B' })),
+otherConns: [
+['Google Analytics', 'Visitor numbers on the Statistics screen', 'Connected', 'Manage'],
+['Newsletter sender', 'Sends the morning briefing email', 'Connected', 'Manage'],
+['Google Search Console', 'Shows which searches bring readers to the site', 'Not connected', 'Connect']
+].map(([name, desc, status0], i) => { const on = s['oc' + i] === undefined ? status0 === 'Connected' : s['oc' + i]; const status = on ? 'Connected' : 'Not connected'; return { name, desc, status, action: on ? 'Disconnect' : 'Connect', toggle: () => this.setState({ ['oc' + i]: !on }), bg: on ? '#E3F1EA' : '#ECEAE6', fg: on ? '#1E6B4F' : '#4A4E55' }; }),
+tabName: tab, otherText: other[tab] || '',
+swatches: [['Red', '#C23B22'], ['Blue', '#1F5FA8'], ['Green', '#1E7A5A'], ['Orange', '#B3560E']].map(([name, hex]) => ({ name, hex, pick: () => this.setState({ accent: hex }), ring: hex === accent ? '#16181D' : '#FFFFFF' })),
+social: [['Facebook', 'facebook.com/…'], ['Instagram', '@handle'], ['YouTube', 'youtube.com/@…'], ['X / Twitter', '@handle'], ['Newsroom email', 'news@…'], ['Phone', '+960 …']].map(([label, ph]) => ({ label, ph }))
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22"},"$preview":{"width":1440,"height":1240}});
+</script>
 </body>
 </html>

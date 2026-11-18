@@ -15,9 +15,11 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 .ed-body:focus{outline:none}
 .ed-field:focus{outline:2px solid #16181D;outline-offset:-1px}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div style="width: 1440px; min-height: 1240px; display: flex; background: #F4F2EE">
 
@@ -28,33 +30,9 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8F98">Admin</span>
 </a>
 <nav style="display: flex; flex-direction: column; gap: 2px">
-
-<a href="Admin-Overview.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Overview</a>
-
-<a href="Admin-Articles.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Articles</a>
-
-<a href="Admin-Editor.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: #2A2D34; color: #FFFFFF; border-left: 3px solid #C23B22">New article</a>
-
-<a href="Admin-Video.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Upload video</a>
-
-<a href="Admin-Homepage.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Homepage layout</a>
-
-<a href="Admin-Media.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Media library</a>
-
-<a href="Admin-Stats.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Statistics</a>
-
-<a href="Admin-Ads.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Ads</a>
-
-<a href="Admin-Comments.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Comments</a>
-
-<a href="Admin-Categories.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Categories &amp; tags</a>
-
-<a href="Admin-Authors.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Authors</a>
-
-<a href="Admin-Users.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Users &amp; roles</a>
-
-<a href="Admin-Settings.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Settings</a>
-
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="13">
+<a href="{{n.href}}" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: {{n.bg}}; color: {{n.fg}}; border-left: 3px solid {{n.bar}}">{{n.label}}</a>
+</sc-for>
 </nav>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-top: 1px solid #2A2D34">
 <div style="width: 36px; height: 36px; border-radius: 999px; background: #3A3D44"></div>
@@ -71,8 +49,8 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="font-size: 12px; color: #1E7A5A">● Saved automatically</span>
 </div>
 <div role="group" aria-label="Writing language" style="display: flex; border: 1px solid #D9D3C7; border-radius: 6px; overflow: hidden">
-<button type="button" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: #16181D; color: #FFFFFF">English</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: #FFFFFF; color: #16181D">Dhivehi</button>
+<button type="button" onClick="{{setEN}}" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: {{enBg}}; color: {{enFg}}">English</button>
+<button type="button" onClick="{{setDV}}" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: {{dvBg}}; color: {{dvFg}}">Dhivehi</button>
 </div>
 <a href="#" style="height: 40px; padding: 0 16px; border-radius: 6px; border: 1px solid #D9D3C7; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>Preview</a>
 </header>
@@ -81,38 +59,22 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 
 <!-- Writing column -->
 <div style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px">
-<div dir="ltr" style="padding: 32px 40px 8px; display: flex; flex-direction: column; gap: 14px">
-<textarea class="ed-field" aria-label="Headline" dir="ltr" placeholder="Headline" rows="2" style="border: none; padding: 0; font-family: Fraunces, Georgia, serif; font-size: 36px; font-weight: 700; line-height: 1.25; resize: none; background: transparent; color: #16181D; text-align: left"></textarea>
-
+<div dir="{{dir}}" style="padding: 32px 40px 8px; display: flex; flex-direction: column; gap: 14px">
+<textarea class="ed-field" aria-label="Headline" dir="{{dir}}" placeholder="{{phHead}}" rows="2" style="border: none; padding: 0; font-family: {{headFont}}; font-size: 36px; font-weight: 700; line-height: 1.25; resize: none; background: transparent; color: #16181D; text-align: {{align}}"></textarea>
+<sc-if value="{{isEN}}" hint-placeholder-val="{{true}}">
 <textarea class="ed-field" aria-label="Summary" placeholder="Summary — one or two sentences (optional)" rows="2" style="border: none; padding: 0; font-family: inherit; font-size: 19px; line-height: 1.5; resize: none; background: transparent; color: #4A4E55"></textarea>
-
+</sc-if>
 </div>
 
 <!-- Toolbar -->
 <div style="position: sticky; top: 0; display: flex; gap: 2px; padding: 8px 32px; margin-top: 12px; border-top: 1px solid #EFEAE2; border-bottom: 1px solid #EFEAE2; background: #FFFFFF; flex-wrap: wrap">
-
-<button type="button" title="Heading" aria-label="Heading" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 700; font-style: normal; cursor: pointer; color: #16181D">H</button>
-
-<button type="button" title="Bold" aria-label="Bold" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 800; font-style: normal; cursor: pointer; color: #16181D">B</button>
-
-<button type="button" title="Italic" aria-label="Italic" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 500; font-style: italic; cursor: pointer; color: #16181D">I</button>
-
-<button type="button" title="Link" aria-label="Link" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; font-style: normal; cursor: pointer; color: #16181D">Link</button>
-
-<button type="button" title="List" aria-label="List" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; font-style: normal; cursor: pointer; color: #16181D">• List</button>
-
-<button type="button" title="Quote" aria-label="Quote" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; font-style: normal; cursor: pointer; color: #16181D">“ Quote</button>
-
-<button type="button" title="Photo" aria-label="Photo" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; font-style: normal; cursor: pointer; color: #16181D">Photo</button>
-
-<button type="button" title="Video" aria-label="Video" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; font-style: normal; cursor: pointer; color: #16181D">Video</button>
-
-<button type="button" title="Embed (post, map)" aria-label="Embed (post, map)" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; font-style: normal; cursor: pointer; color: #16181D">Embed</button>
-
+<sc-for list="{{tools}}" as="tl" hint-placeholder-count="9">
+<button type="button" data-cmd="{{tl.cmd}}" title="{{tl.label}}" aria-label="{{tl.label}}" style="height: 34px; min-width: 34px; padding: 0 10px; border: none; border-radius: 6px; background: transparent; font-family: inherit; font-size: 14px; font-weight: {{tl.weight}}; font-style: {{tl.style}}; cursor: pointer; color: #16181D">{{tl.text}}</button>
+</sc-for>
 </div>
 
 <!-- Body: you can type here -->
-<div class="ed-body" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Article text" dir="ltr" data-placeholder="Start writing your story…" style="padding: 28px 40px; min-height: 560px; font-family: inherit; font-size: 19px; line-height: 1.75; color: #16181D; text-align: left"></div>
+<div class="ed-body" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Article text" dir="{{dir}}" data-placeholder="{{phBody}}" style="padding: 28px 40px; min-height: 560px; font-family: {{bodyFont}}; font-size: 19px; line-height: 1.75; color: #16181D; text-align: {{align}}"></div>
 
 <div style="display: flex; padding: 10px 20px; border-top: 1px solid #EFEAE2; font-size: 13px; color: #5B5F66"><span style="flex-grow: 1">0 words</span><span>Version history</span></div>
 </div>
@@ -123,11 +85,17 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <!-- Publishing -->
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
 <div role="group" aria-label="When to publish" style="display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #D9D3C7; border-radius: 8px; overflow: hidden">
-<button type="button" style="height: 38px; border: none; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; background: #16181D; color: #FFFFFF">Publish now</button>
-<button type="button" style="height: 38px; border: none; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; background: #FFFFFF; color: #16181D">Schedule</button>
+<button type="button" onClick="{{setNow}}" style="height: 38px; border: none; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; background: {{nowBg}}; color: {{nowFg}}">Publish now</button>
+<button type="button" onClick="{{setLater}}" style="height: 38px; border: none; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; background: {{laterBg}}; color: {{laterFg}}">Schedule</button>
 </div>
-
-<button type="button" style="height: 44px; border: none; border-radius: 6px; background: #C23B22; color: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 15px; cursor: pointer">Publish now</button>
+<sc-if value="{{isLater}}" hint-placeholder-val="{{false}}">
+<div style="display: grid; grid-template-columns: 1fr 120px; gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="ed-date" style="font-size: 12px; font-weight: 700; color: #4A4E55">Date</label><input id="ed-date" type="date" value="2026-11-19" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 10px; font-size: 14px; font-family: inherit"></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="ed-time" style="font-size: 12px; font-weight: 700; color: #4A4E55">Time</label><input id="ed-time" type="time" value="07:00" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 10px; font-size: 14px; font-family: inherit"></div>
+</div>
+<span style="font-size: 12px; color: #5B5F66">Maldives time (UTC+5). Goes live automatically.</span>
+</sc-if>
+<button type="button" style="height: 44px; border: none; border-radius: 6px; background: {{accent}}; color: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 15px; cursor: pointer">{{publishLabel}}</button>
 <button type="button" style="height: 38px; border: 1px solid #D9D3C7; border-radius: 6px; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Send for review</button>
 </div>
 
@@ -136,7 +104,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="font-size: 14px; font-weight: 700">Main photo</span>
 <div style="height: 150px; border-radius: 8px; border: 2px dashed #D9D3C7; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #4A4E55; font-size: 14px">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 16l-5-5-8 8"></path></svg>
-<span>Drop a photo or <a href="Admin-Media.html" style="color: #C23B22; font-weight: 700">choose</a></span>
+<span>Drop a photo or <a href="Admin-Media.html" style="color: {{accent}}; font-weight: 700">choose</a></span>
 </div>
 <input type="text" aria-label="Photo caption" placeholder="Caption and credit" style="height: 38px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit">
 </div>
@@ -147,23 +115,57 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="display: flex; flex-direction: column; gap: 4px"><label for="ed-tags" style="font-size: 12px; font-weight: 700; color: #4A4E55">Tags</label><input id="ed-tags" type="text" placeholder="Type to find or add" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit"></div>
 <div style="display: flex; flex-direction: column; gap: 4px"><label for="ed-auth" style="font-size: 12px; font-weight: 700; color: #4A4E55">Author</label><input id="ed-auth" type="text" value="[Your name]" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit"></div>
 <div style="display: flex; flex-direction: column; gap: 4px"><label for="ed-spot" style="font-size: 12px; font-weight: 700; color: #4A4E55">Homepage spot <span style="font-weight: 500; color: #5B5F66">(optional)</span></label><select id="ed-spot" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 10px; font-size: 14px; font-family: inherit; background: #FFFFFF"><option>None — just the section page</option><option>Main story</option><option>Next to main</option><option>Editor’s picks</option><option>Breaking bar</option></select></div>
-<label style="display: flex; align-items: center; gap: 8px; font-size: 14px"><input type="checkbox" checked="" style="width: 17px; height: 17px"> Allow comments</label>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px"><input type="checkbox" checked style="width: 17px; height: 17px"> Allow comments</label>
 </div>
 
 <!-- Social -->
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 14px; font-weight: 700">Share when published</span>
-<label style="display: flex; align-items: center; gap: 8px; font-size: 14px"><input type="checkbox" checked="" style="width: 17px; height: 17px"> Facebook Page</label>
-<label style="display: flex; align-items: center; gap: 8px; font-size: 14px"><input type="checkbox" checked="" style="width: 17px; height: 17px"> X (Twitter)</label>
-<textarea aria-label="Custom post text" dir="ltr" rows="2" placeholder="Custom post text (optional — uses the template from Settings)" style="border: 1px solid #D9D3C7; border-radius: 6px; padding: 8px 10px; font-size: 13px; font-family: inherit; resize: vertical"></textarea>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px"><input type="checkbox" checked style="width: 17px; height: 17px"> Facebook Page</label>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px"><input type="checkbox" checked style="width: 17px; height: 17px"> X (Twitter)</label>
+<textarea aria-label="Custom post text" dir="{{dir}}" rows="2" placeholder="Custom post text (optional — uses the template from Settings)" style="border: 1px solid #D9D3C7; border-radius: 6px; padding: 8px 10px; font-size: 13px; font-family: {{bodyFont}}; resize: vertical"></textarea>
 </div>
 
-<a href="#" style="height: 40px; border-radius: 8px; border: 1px dashed #C9C4BA; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #4A4E55">+ Link the Dhivehi version</a>
+<a href="#" style="height: 40px; border-radius: 8px; border: 1px dashed #C9C4BA; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #4A4E55">{{translateLabel}}</a>
 
 </div>
 </div>
 </div>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const accent = this.props.accent ?? '#C23B22';
+const s = this.state || {};
+const lang = s.lang || 'EN';
+const later = !!s.later;
+const dv = lang === 'DV';
+const nav = [['Overview','Admin-Overview.html'],['Articles','Admin-Articles.html'],['New article','Admin-Editor.html'],['Upload video','Admin-Video.html'],['Homepage layout','Admin-Homepage.html'],['Media library','Admin-Media.html'],['Statistics','Admin-Stats.html'],['Ads','Admin-Ads.html'],['Comments','Admin-Comments.html'],['Categories & tags','Admin-Categories.html'],['Authors','Admin-Authors.html'],['Users & roles','Admin-Users.html'],['Settings','Admin-Settings.html']];
+const active = 'New article';
+const seg = (on) => ({ bg: on ? '#16181D' : '#FFFFFF', fg: on ? '#FFFFFF' : '#16181D' });
+return {
+accent,
+isEN: !dv,
+dir: dv ? 'rtl' : 'ltr',
+align: dv ? 'right' : 'left',
+headFont: dv ? "Faruma, 'Noto Sans Thaana', sans-serif" : 'Fraunces, Georgia, serif',
+bodyFont: dv ? "Faruma, 'Noto Sans Thaana', sans-serif" : 'inherit',
+phHead: dv ? 'ސުރުޚީ ލިޔުއްވާ' : 'Headline',
+phBody: dv ? 'ޚަބަރު ލިޔުން ފައްޓަވާ…' : 'Start writing your story…',
+navItems: nav.map(([label, href]) => ({ label, href, bg: label === active ? '#2A2D34' : 'transparent', fg: label === active ? '#FFFFFF' : '#C9C4BA', bar: label === active ? accent : 'transparent' })),
+enBg: seg(!dv).bg, enFg: seg(!dv).fg, dvBg: seg(dv).bg, dvFg: seg(dv).fg,
+setEN: () => this.setState({ lang: 'EN' }), setDV: () => this.setState({ lang: 'DV' }),
+isLater: later,
+nowBg: seg(!later).bg, nowFg: seg(!later).fg, laterBg: seg(later).bg, laterFg: seg(later).fg,
+setNow: () => this.setState({ later: false }), setLater: () => this.setState({ later: true }),
+publishLabel: later ? 'Schedule' : 'Publish now',
+translateLabel: dv ? '+ Link the English version' : '+ Link the Dhivehi version',
+tools: [['H', 'Heading', 700, 'normal', 'h2'], ['B', 'Bold', 800, 'normal', 'bold'], ['I', 'Italic', 500, 'italic', 'italic'], ['Link', 'Link', 600, 'normal', 'link'], ['• List', 'List', 600, 'normal', 'insertUnorderedList'], ['“ Quote', 'Quote', 600, 'normal', 'blockquote'], ['Photo', 'Photo', 600, 'normal', 'photo'], ['Video', 'Video', 600, 'normal', 'video'], ['Embed', 'Embed (post, map)', 600, 'normal', 'embed']].map(([text, label, weight, style, cmd]) => ({ text, label, weight, style, cmd }))
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22"},"$preview":{"width":1440,"height":1240}});
+</script>
 </body>
 </html>

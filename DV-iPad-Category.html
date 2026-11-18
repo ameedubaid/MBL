@@ -12,9 +12,11 @@
 body{margin:0;font-family:'Faruma','Noto Sans Thaana',sans-serif;background:#F6F3EE;color:#16181D}
 a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div dir="rtl" style="width: 834px; min-height: 3400px; box-sizing: border-box; background: #F6F3EE; display: flex; flex-direction: column; font-family: 'Faruma', 'Noto Sans Thaana', sans-serif">
 
@@ -22,7 +24,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="padding: 20px 32px 0">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 12px; color: #5B5F66; line-height: 1.4">އިޢުލާން · [ފަރާތުގެ ނަން]</span>
-<div style="height: 110px; border-radius: 6px; background: #E4DED3; display: flex; align-items: center; justify-content: center">
+<div style="height: 110px; border-radius: 6px; background: {{ads.top}}; display: flex; align-items: center; justify-content: center">
 <div style="background: #FFFFFF; border-radius: 6px; padding: 8px 18px; display: flex; flex-direction: column; align-items: center; gap: 2px">
 <span dir="ltr" style="font-size: 15px; font-weight: 700; color: #16181D; font-family: system-ui, sans-serif">Top Banner</span>
 <span dir="ltr" style="font-size: 12px; color: #4A4E55; font-family: system-ui, sans-serif">All pages · JPEG, PNG, GIF · 512 KB max</span>
@@ -34,7 +36,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <!-- Masthead -->
 <div style="padding: 20px 32px 16px; display: flex; align-items: center; justify-content: space-between">
 <span style="width: 190px; font-size: 15px; color: #4A4E55">ހޯމަ، 28 ސެޕްޓެމްބަރު</span>
-<a href="DV-iPad-Home.html" dir="ltr" style="font-family: Fraunces, Georgia, serif; font-size: 44px; font-weight: 800; letter-spacing: -0.02em; line-height: 1"><span dir="rtl" style="display: inline-flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.25; white-space: nowrap; letter-spacing: 0"><span style="font-family: Faruma, 'Noto Sans Thaana', sans-serif; font-size: 36px; font-weight: 700">ބިޒްނަސް ލެޖާ</span><span dir="ltr" style="font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; color: #C23B22">MALDIVES BUSINESS LEDGER</span></span></a>
+<a href="DV-iPad-Home.html" dir="ltr" style="font-family: Fraunces, Georgia, serif; font-size: 44px; font-weight: 800; letter-spacing: -0.02em; line-height: 1"><span dir="rtl" style="display: inline-flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.25; white-space: nowrap; letter-spacing: 0"><span style="font-family: Faruma, 'Noto Sans Thaana', sans-serif; font-size: 36px; font-weight: 700">ބިޒްނަސް ލެޖާ</span><span dir="ltr" style="font-family: 'Source Sans 3', system-ui, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; color: {{accent}}">MALDIVES BUSINESS LEDGER</span></span></a>
 <div style="width: 190px; display: flex; justify-content: flex-end; align-items: center; gap: 8px">
 <a href="iPad-Category.html" dir="ltr" style="height: 36px; padding: 0 14px; border: 1px solid #BDB6A8; border-radius: 999px; display: flex; align-items: center; font-family: system-ui, sans-serif; font-size: 14px; font-weight: 700">English</a>
 <button type="button" aria-label="ހޯދާ" style="width: 44px; height: 44px; border: none; background: transparent; color: #16181D; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></button>
@@ -44,7 +46,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <a href="DV-iPad-Home.html">ފުރަތަމަ ސަފުހާ</a>
 <a href="#">ވިޔަފާރި</a>
 <a href="#">ދަތުރު</a>
-<a href="DV-iPad-Category.html" style="color: #C23B22">ޓެކް</a>
+<a href="DV-iPad-Category.html" style="color: {{accent}}">ޓެކް</a>
 <a href="#">ސިޔާސީ</a>
 <a href="#">ދިރިއުޅުން</a>
 <a href="#">ރިޕޯޓް</a>
@@ -58,59 +60,29 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <p style="margin: 0; font-size: 18px; color: #4A4E55">ގެޖެޓްތަކާއި، އެޕްތަކާއި، މާދަމާ ބިނާކުރާ މީހުން.</p>
 <div style="display: flex; gap: 10px; padding-top: 4px">
 <a href="DV-iPad-Category.html" style="background: #16181D; color: #FFFFFF; border-radius: 999px; padding: 7px 18px; font-size: 15px; font-weight: 700">ހުރިހާ</a>
-
-<a href="DV-iPad-Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 7px 18px; font-size: 15px; font-weight: 700">ގެޖެޓް</a>
-
-<a href="DV-iPad-Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 7px 18px; font-size: 15px; font-weight: 700">އެޕް</a>
-
-<a href="DV-iPad-Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 7px 18px; font-size: 15px; font-weight: 700">ސައިންސް</a>
-
-<a href="DV-iPad-Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 7px 18px; font-size: 15px; font-weight: 700">ސްޓާޓްއަޕް</a>
-
+<sc-for list="{{subcats}}" as="sc" hint-placeholder-count="4">
+<a href="DV-iPad-Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 7px 18px; font-size: 15px; font-weight: 700">{{sc}}</a>
+</sc-for>
 </div>
 </div>
 
 <!-- Feature + 2×2 -->
 <div style="padding: 32px 32px 0; display: flex; flex-direction: column; gap: 28px">
 <a href="DV-iPad-Article.html" style="height: 400px; border-radius: 8px; background: #3B4A63; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; box-sizing: border-box; color: #FFFFFF; gap: 12px">
-<span style="align-self: flex-start; background: #C23B22; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 3px">ޚާއްޞަ</span>
+<span style="align-self: flex-start; background: {{accent}}; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 3px">ޚާއްޞަ</span>
 <span style="font-size: 30px; line-height: 1.6; font-weight: 700">ޒުވާނުން ސެޓަލައިޓް ހަދަން ދަސްކުރާ ވޯކްޝޮޕެއް</span>
 <span style="font-size: 14px; color: #D6D2CA">ލިޔުނީ: [ލިޔުންތެރިޔާ] · 7 މިނިޓު</span>
 </a>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
-
+<sc-for list="{{small}}" as="s" hint-placeholder-count="4">
 <a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center">
-<div style="width: 150px; height: 106px; flex-shrink: 0; border-radius: 6px; background: #4A5A66"></div>
+<div style="width: 150px; height: 106px; flex-shrink: 0; border-radius: 6px; background: {{s.tone}}"></div>
 <div style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">ގެޖެޓް</span>
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ހަލާކުވީމަ ރިޕެއާކުރެވޭ ފޯނުތައް އަލުން މަގުބޫލުވަނީ</span>
+<span style="font-size: 13px; font-weight: 700; color: {{accent}}">{{s.cat}}</span>
+<span style="font-size: 17px; font-weight: 700; line-height: 1.65">{{s.title}}</span>
 </div>
 </a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center">
-<div style="width: 150px; height: 106px; flex-shrink: 0; border-radius: 6px; background: #5A4636"></div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">އެޕް</span>
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">އެޑިޓަރުން ކޮންމެ ދުވަހަކު ބޭނުންކުރާ ފަސް އެޕް</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center">
-<div style="width: 150px; height: 106px; flex-shrink: 0; border-radius: 6px; background: #34506B"></div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">ސައިންސް</span>
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ތަރި ބަލާ ކުލަބަކަށް އާ ދޫދިއެއް ފެނިއްޖެ</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center">
-<div style="width: 150px; height: 106px; flex-shrink: 0; border-radius: 6px; background: #556B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<span style="font-size: 13px; font-weight: 700; color: #C23B22">ސްޓާޓްއަޕް</span>
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ކުދި ސްޓޫޑިއޯތަކުން އަމިއްލަ ޓޫލް ހަދަނީ ކީއްވެ؟</span>
-</div>
-</a>
-
+</sc-for>
 </div>
 </div>
 
@@ -118,7 +90,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="padding: 44px 32px 0">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 12px; color: #5B5F66; line-height: 1.4">އިޢުލާން · [ފަރާތުގެ ނަން]</span>
-<div style="height: 110px; border-radius: 6px; background: #E4DED3; display: flex; align-items: center; justify-content: center">
+<div style="height: 110px; border-radius: 6px; background: {{ads.subpage}}; display: flex; align-items: center; justify-content: center">
 <div style="background: #FFFFFF; border-radius: 6px; padding: 8px 18px; display: flex; flex-direction: column; align-items: center; gap: 2px">
 <span dir="ltr" style="font-size: 15px; font-weight: 700; color: #16181D; font-family: system-ui, sans-serif">Sub-Page Banner</span>
 <span dir="ltr" style="font-size: 12px; color: #4A4E55; font-family: system-ui, sans-serif">Category pages only · JPEG, PNG, GIF · 512 KB max</span>
@@ -134,87 +106,15 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="flex-grow: 1; height: 1px; background: #16181D"></span>
 </div>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px">
-
+<sc-for list="{{stories}}" as="st" hint-placeholder-count="10">
 <a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #3B4A63"></div>
+<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: {{st.tone}}"></div>
 <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ބަސްތައް ހިންގުމަށް ބޭނުންކުރާ އޯޕަން ސޯސް ޓޫލްތައް</span>
-<span style="font-size: 13px; color: #5B5F66">6 މިނިޓު</span>
+<span style="font-size: 17px; font-weight: 700; line-height: 1.65">{{st.title}}</span>
+<span style="font-size: 13px; color: #5B5F66">{{st.read}}</span>
 </div>
 </a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #556B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">އީ-ވޭސްޓް ކުޑަކުރުމަށް ރިޕެއާ ކެފޭތައް</span>
-<span style="font-size: 13px; color: #5B5F66">5 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #5B3B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">އާ ޕްރައިވެސީ ޤަވާޢިދަށް ލުއި ގައިޑެއް</span>
-<span style="font-size: 13px; color: #5B5F66">7 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #4A5A66"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ކުރިއަށް އޮތް ލެޕްޓޮޕް މޮޑިއުލަރ ވާނީ ކީއްވެ؟</span>
-<span style="font-size: 13px; color: #5B5F66">4 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #2F5A5E"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ކުދި ރަށްތަކަށް ސޯލާ ކިޓް: ޓެސްޓުކޮށް ބަލައިފި</span>
-<span style="font-size: 13px; color: #5B5F66">8 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #6A5343"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ކޯޑިންގ ކުލަބުތަކަށް އައި ބަދަލު</span>
-<span style="font-size: 13px; color: #5B5F66">6 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #34506B"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ސައިކަލު މަގުތަކުގެ ޗާޓު ހަދާ ވޮލަންޓިއަރުން</span>
-<span style="font-size: 13px; color: #5B5F66">5 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #5A4636"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ސިގްނަލް ދެރަ ތަންތަނަށް އޮފްލައިން އެޕްތައް</span>
-<span style="font-size: 13px; color: #5B5F66">6 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #3B4A63"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ގޭގެ ނެޓްވޯކަށް ފެށުމުގެ ގައިޑެއް</span>
-<span style="font-size: 13px; color: #5B5F66">9 މިނިޓު</span>
-</div>
-</a>
-
-<a href="DV-iPad-Article.html" style="display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 104px; height: 80px; flex-shrink: 0; border-radius: 6px; background: #7A5A3C"></div>
-<div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
-<span style="font-size: 17px; font-weight: 700; line-height: 1.65">ކަރުދާހުގެ ނޯޓު ފޮތް އަލުން</span>
-<span style="font-size: 13px; color: #5B5F66">4 މިނިޓު</span>
-</div>
-</a>
-
+</sc-for>
 </div>
 <nav aria-label="ސަފުހާތައް" style="display: flex; justify-content: center; gap: 8px; padding-top: 20px">
 <a href="#" style="width: 44px; height: 44px; border-radius: 4px; background: #16181D; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: system-ui, sans-serif">1</a>
@@ -235,6 +135,38 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="border-top: 1px solid #3A3D44; padding-top: 18px; font-size: 14px">© 2026 ބިޒްނަސް ލެޖާ. ހުރިހާ ޙައްޤެއް ލިބިގެންވޭ.</div>
 </footer>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const on = this.props.showAdColors ?? true;
+const c = (hex) => on ? hex : '#E4DED3';
+return {
+accent: this.props.accent ?? '#C23B22',
+ads: { top: c('#6FB9DA'), subpage: c('#62A866') },
+subcats: ['ގެޖެޓް', 'އެޕް', 'ސައިންސް', 'ސްޓާޓްއަޕް'],
+small: [
+{ cat: 'ގެޖެޓް', title: 'ހަލާކުވީމަ ރިޕެއާކުރެވޭ ފޯނުތައް އަލުން މަގުބޫލުވަނީ', tone: '#4A5A66' },
+{ cat: 'އެޕް', title: 'އެޑިޓަރުން ކޮންމެ ދުވަހަކު ބޭނުންކުރާ ފަސް އެޕް', tone: '#5A4636' },
+{ cat: 'ސައިންސް', title: 'ތަރި ބަލާ ކުލަބަކަށް އާ ދޫދިއެއް ފެނިއްޖެ', tone: '#34506B' },
+{ cat: 'ސްޓާޓްއަޕް', title: 'ކުދި ސްޓޫޑިއޯތަކުން އަމިއްލަ ޓޫލް ހަދަނީ ކީއްވެ؟', tone: '#556B4A' }
+],
+stories: [
+{ title: 'ބަސްތައް ހިންގުމަށް ބޭނުންކުރާ އޯޕަން ސޯސް ޓޫލްތައް', read: '6 މިނިޓު', tone: '#3B4A63' },
+{ title: 'އީ-ވޭސްޓް ކުޑަކުރުމަށް ރިޕެއާ ކެފޭތައް', read: '5 މިނިޓު', tone: '#556B4A' },
+{ title: 'އާ ޕްރައިވެސީ ޤަވާޢިދަށް ލުއި ގައިޑެއް', read: '7 މިނިޓު', tone: '#5B3B4A' },
+{ title: 'ކުރިއަށް އޮތް ލެޕްޓޮޕް މޮޑިއުލަރ ވާނީ ކީއްވެ؟', read: '4 މިނިޓު', tone: '#4A5A66' },
+{ title: 'ކުދި ރަށްތަކަށް ސޯލާ ކިޓް: ޓެސްޓުކޮށް ބަލައިފި', read: '8 މިނިޓު', tone: '#2F5A5E' },
+{ title: 'ކޯޑިންގ ކުލަބުތަކަށް އައި ބަދަލު', read: '6 މިނިޓު', tone: '#6A5343' },
+{ title: 'ސައިކަލު މަގުތަކުގެ ޗާޓު ހަދާ ވޮލަންޓިއަރުން', read: '5 މިނިޓު', tone: '#34506B' },
+{ title: 'ސިގްނަލް ދެރަ ތަންތަނަށް އޮފްލައިން އެޕްތައް', read: '6 މިނިޓު', tone: '#5A4636' },
+{ title: 'ގޭގެ ނެޓްވޯކަށް ފެށުމުގެ ގައިޑެއް', read: '9 މިނިޓު', tone: '#3B4A63' },
+{ title: 'ކަރުދާހުގެ ނޯޓު ފޮތް އަލުން', read: '4 މިނިޓު', tone: '#7A5A3C' }
+]
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22","options":["#C23B22","#1F5FA8","#1E7A5A","#B3560E"]},"showAdColors":{"editor":"boolean","default":true},"$preview":{"width":834,"height":3400}});
+</script>
 </body>
 </html>

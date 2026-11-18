@@ -12,9 +12,11 @@
 body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;background:#F6F3EE;color:#16181D}
 a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div style="width: 1440px; min-height: 2900px; box-sizing: border-box; background: #F6F3EE; display: flex; flex-direction: column">
 
@@ -22,7 +24,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="padding: 24px 80px 0">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5B5F66">Advertisement · [Advertiser]</span>
-<div style="height: 120px; border-radius: 6px; background: #E4DED3; display: flex; align-items: center; justify-content: center">
+<div style="height: 120px; border-radius: 6px; background: {{ads.top}}; display: flex; align-items: center; justify-content: center">
 <div style="background: #FFFFFF; border-radius: 6px; padding: 10px 20px; display: flex; flex-direction: column; align-items: center; gap: 3px">
 <span style="font-size: 17px; font-weight: 700; color: #16181D">Top Banner</span>
 <span style="font-size: 12px; color: #4A4E55">All pages · JPEG, PNG, GIF · 512 KB max</span>
@@ -52,7 +54,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <a href="Main.html">Home</a>
 <a href="#">Business</a>
 <a href="#">Travel</a>
-<a href="Category.html" style="color: #C23B22">Tech</a>
+<a href="Category.html" style="color: {{accent}}">Tech</a>
 <a href="#">Politics</a>
 <a href="#">Lifestyle</a>
 <a href="#">Report</a>
@@ -70,51 +72,27 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </div>
 <div style="display: flex; gap: 10px">
 <a href="Category.html" style="background: #16181D; color: #FFFFFF; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">All</a>
-
-<a href="Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">Gadgets</a>
-
-<a href="Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">Apps</a>
-
-<a href="Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">Science</a>
-
-<a href="Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">Startups</a>
-
+<sc-for list="{{subcats}}" as="sc" hint-placeholder-count="4">
+<a href="Category.html" style="border: 1px solid #BDB6A8; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600">{{sc}}</a>
+</sc-for>
 </div>
 </div>
 
 <!-- Top grid: feature (left) + 2×2 small (right) -->
 <div style="padding: 40px 80px 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px">
 <a href="Article.html" style="grid-column: span 6; border-radius: 8px; background: #3B4A63; display: flex; flex-direction: column; justify-content: flex-end; padding: 36px; box-sizing: border-box; color: #FFFFFF; gap: 14px">
-<span style="align-self: flex-start; background: #C23B22; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 10px; border-radius: 3px">Featured</span>
+<span style="align-self: flex-start; background: {{accent}}; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 10px; border-radius: 3px">Featured</span>
 <span style="font-family: Fraunces, Georgia, serif; font-size: 38px; line-height: 1.12; font-weight: 700">Inside the workshop teaching teenagers to build satellites</span>
 <span style="font-size: 14px; color: #D6D2CA">By [Author name] · 7 min read</span>
 </a>
 <div style="grid-column: span 6; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
-
+<sc-for list="{{small}}" as="s" hint-placeholder-count="4">
 <a href="Article.html" style="display: flex; flex-direction: column; gap: 10px">
-<div style="height: 150px; border-radius: 6px; background: #4A5A66"></div>
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C23B22">Gadgets</span>
-<span style="font-size: 17px; font-weight: 600; line-height: 1.35">The repair-first phones making a comeback</span>
+<div style="height: 150px; border-radius: 6px; background: {{s.tone}}"></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{accent}}">{{s.cat}}</span>
+<span style="font-size: 17px; font-weight: 600; line-height: 1.35">{{s.title}}</span>
 </a>
-
-<a href="Article.html" style="display: flex; flex-direction: column; gap: 10px">
-<div style="height: 150px; border-radius: 6px; background: #5A4636"></div>
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C23B22">Apps</span>
-<span style="font-size: 17px; font-weight: 600; line-height: 1.35">Five apps our editors actually use every day</span>
-</a>
-
-<a href="Article.html" style="display: flex; flex-direction: column; gap: 10px">
-<div style="height: 150px; border-radius: 6px; background: #34506B"></div>
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C23B22">Science</span>
-<span style="font-size: 17px; font-weight: 600; line-height: 1.35">A backyard telescope club spots a new comet</span>
-</a>
-
-<a href="Article.html" style="display: flex; flex-direction: column; gap: 10px">
-<div style="height: 150px; border-radius: 6px; background: #556B4A"></div>
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C23B22">Startups</span>
-<span style="font-size: 17px; font-weight: 600; line-height: 1.35">Why small studios are building their own tools</span>
-</a>
-
+</sc-for>
 </div>
 </div>
 
@@ -122,7 +100,7 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="padding: 56px 80px 0">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5B5F66">Advertisement · [Advertiser]</span>
-<div style="height: 120px; border-radius: 6px; background: #E4DED3; display: flex; align-items: center; justify-content: center">
+<div style="height: 120px; border-radius: 6px; background: {{ads.subpage}}; display: flex; align-items: center; justify-content: center">
 <div style="background: #FFFFFF; border-radius: 6px; padding: 10px 20px; display: flex; flex-direction: column; align-items: center; gap: 3px">
 <span style="font-size: 17px; font-weight: 700; color: #16181D">Sub-Page Banner</span>
 <span style="font-size: 12px; color: #4A4E55">Category pages only · JPEG, PNG, GIF · 512 KB max</span>
@@ -138,87 +116,15 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="flex-grow: 1; height: 1px; background: #16181D"></span>
 </div>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px">
-
+<sc-for list="{{stories}}" as="st" hint-placeholder-count="10">
 <a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #3B4A63"></div>
+<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: {{st.tone}}"></div>
 <div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">The open-source tools quietly running your city’s buses</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 6 min read</span>
+<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">{{st.title}}</span>
+<span style="font-size: 13px; color: #5B5F66">By [Author] · {{st.read}}</span>
 </div>
 </a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #556B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">How repair cafés are fighting e-waste</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 5 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #5B3B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">A plain guide to the new privacy rules</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 7 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #4A5A66"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">Why your next laptop may be modular</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 4 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #2F5A5E"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">Solar kits for small islands, tested</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 8 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #6A5343"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">What a four-day school week did for coding clubs</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 6 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #34506B"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">The volunteers mapping every bike lane in town</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 5 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #5A4636"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">Offline-first apps for places with patchy signal</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 6 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #3B4A63"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">A beginner’s guide to home networks</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 9 min read</span>
-</div>
-</a>
-
-<a href="Article.html" style="display: flex; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid #D9D3C7">
-<div style="width: 140px; height: 96px; flex-shrink: 0; border-radius: 4px; background: #7A5A3C"></div>
-<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
-<span style="font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 700; line-height: 1.25">The quiet return of the paper notebook</span>
-<span style="font-size: 13px; color: #5B5F66">By [Author] · 4 min read</span>
-</div>
-</a>
-
+</sc-for>
 </div>
 <nav aria-label="Pagination" style="display: flex; justify-content: center; gap: 8px; padding-top: 24px">
 <a href="#" style="width: 44px; height: 44px; border-radius: 4px; background: #16181D; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">1</a>
@@ -237,22 +143,12 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="font-family: Fraunces, Georgia, serif; font-size: 40px; font-weight: 800; color: #F6F3EE"><img src="logo-white.svg" alt="Maldives Business Ledger" style="display: block; height: 36px; width: auto"></div>
 <div style="font-size: 15px; line-height: 1.6">Independent reporting on the stories shaping our cities, our work and our weekends.</div>
 </div>
-
+<sc-for list="{{footerCols}}" as="f" hint-placeholder-count="3">
 <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F3EE">Sections</span>
-<a href="#">Business</a><a href="#">Travel</a><a href="#">Tech</a><a href="#">Politics</a>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F3EE">{{f.h}}</span>
+<sc-for list="{{f.links}}" as="l" hint-placeholder-count="4"><a href="#">{{l}}</a></sc-for>
 </div>
-
-<div style="grid-column: span 2; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F3EE">Company</span>
-<a href="#">About us</a><a href="#">Our team</a><a href="#">Careers</a><a href="#">Advertise</a>
-</div>
-
-<div style="grid-column: span 2; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
-<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F3EE">Follow</span>
-<a href="#">Newsletter</a><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Podcast</a>
-</div>
-
+</sc-for>
 <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F6F3EE">Contact</span>
 <span>[Newsroom email]</span>
@@ -266,6 +162,43 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </div>
 </footer>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const on = this.props.showAdColors ?? true;
+const c = (hex) => on ? hex : '#E4DED3';
+return {
+accent: this.props.accent ?? '#C23B22',
+ads: { top: c('#6FB9DA'), subpage: c('#62A866') },
+subcats: ['Gadgets', 'Apps', 'Science', 'Startups'],
+small: [
+{ cat: 'Gadgets', title: 'The repair-first phones making a comeback', tone: '#4A5A66' },
+{ cat: 'Apps', title: 'Five apps our editors actually use every day', tone: '#5A4636' },
+{ cat: 'Science', title: 'A backyard telescope club spots a new comet', tone: '#34506B' },
+{ cat: 'Startups', title: 'Why small studios are building their own tools', tone: '#556B4A' }
+],
+stories: [
+{ title: 'The open-source tools quietly running your city’s buses', read: '6 min read', tone: '#3B4A63' },
+{ title: 'How repair cafés are fighting e-waste', read: '5 min read', tone: '#556B4A' },
+{ title: 'A plain guide to the new privacy rules', read: '7 min read', tone: '#5B3B4A' },
+{ title: 'Why your next laptop may be modular', read: '4 min read', tone: '#4A5A66' },
+{ title: 'Solar kits for small islands, tested', read: '8 min read', tone: '#2F5A5E' },
+{ title: 'What a four-day school week did for coding clubs', read: '6 min read', tone: '#6A5343' },
+{ title: 'The volunteers mapping every bike lane in town', read: '5 min read', tone: '#34506B' },
+{ title: 'Offline-first apps for places with patchy signal', read: '6 min read', tone: '#5A4636' },
+{ title: 'A beginner’s guide to home networks', read: '9 min read', tone: '#3B4A63' },
+{ title: 'The quiet return of the paper notebook', read: '4 min read', tone: '#7A5A3C' }
+],
+footerCols: [
+{ h: 'Sections', links: ['Business', 'Travel', 'Tech', 'Politics'] },
+{ h: 'Company', links: ['About us', 'Our team', 'Careers', 'Advertise'] },
+{ h: 'Follow', links: ['Newsletter', 'Instagram', 'YouTube', 'Podcast'] }
+]
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22","options":["#C23B22","#1F5FA8","#1E7A5A","#B3560E"]},"showAdColors":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":2900}});
+</script>
 </body>
 </html>

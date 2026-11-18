@@ -11,9 +11,11 @@
 body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;background:#F4F2EE;color:#16181D}
 a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </style>
+<script src="mbl-runtime.js"></script>
 </head>
 <body>
-
+<div id="dc-root"></div>
+<template id="dc-template">
 
 <div style="width: 1440px; min-height: 1760px; display: flex; background: #F4F2EE">
 
@@ -24,33 +26,9 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8F98">Admin</span>
 </a>
 <nav style="display: flex; flex-direction: column; gap: 2px">
-
-<a href="Admin-Overview.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Overview</a>
-
-<a href="Admin-Articles.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Articles</a>
-
-<a href="Admin-Editor.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">New article</a>
-
-<a href="Admin-Video.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Upload video</a>
-
-<a href="Admin-Homepage.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: #2A2D34; color: #FFFFFF; border-left: 3px solid #C23B22">Homepage layout</a>
-
-<a href="Admin-Media.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Media library</a>
-
-<a href="Admin-Stats.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Statistics</a>
-
-<a href="Admin-Ads.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Ads</a>
-
-<a href="Admin-Comments.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Comments</a>
-
-<a href="Admin-Categories.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Categories &amp; tags</a>
-
-<a href="Admin-Authors.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Authors</a>
-
-<a href="Admin-Users.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Users &amp; roles</a>
-
-<a href="Admin-Settings.html" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: transparent; color: #C9C4BA; border-left: 3px solid transparent">Settings</a>
-
+<sc-for list="{{navItems}}" as="n" hint-placeholder-count="13">
+<a href="{{n.href}}" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 12px; border-radius: 6px; font-size: 15px; font-weight: 600; background: {{n.bg}}; color: {{n.fg}}; border-left: 3px solid {{n.bar}}">{{n.label}}</a>
+</sc-for>
 </nav>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 10px; border-top: 1px solid #2A2D34">
 <div style="width: 36px; height: 36px; border-radius: 999px; background: #3A3D44"></div>
@@ -62,14 +40,14 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <header style="height: 68px; background: #FFFFFF; border-bottom: 1px solid #E4DED3; display: flex; align-items: center; gap: 16px; padding: 0 32px">
 <div style="display: flex; flex-direction: column; flex-grow: 1">
 <h1 style="margin: 0; font-size: 20px; font-weight: 700">Homepage layout</h1>
-<span style="font-size: 12px; color: #1E7A5A">Live · last updated 25 min ago</span>
+<span style="font-size: 12px; color: {{changedColor}}">{{changedText}}</span>
 </div>
 <div role="group" aria-label="Site" style="display: flex; border: 1px solid #D9D3C7; border-radius: 6px; overflow: hidden">
-<button type="button" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: #16181D; color: #FFFFFF">EN site</button>
-<button type="button" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: #FFFFFF; color: #16181D">DV site</button>
+<button type="button" onClick="{{setEN}}" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: {{enBg}}; color: {{enFg}}">EN site</button>
+<button type="button" onClick="{{setDV}}" style="height: 36px; padding: 0 14px; border: none; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer; background: {{dvBg}}; color: {{dvFg}}">DV site</button>
 </div>
 <a href="Main.html" style="height: 40px; padding: 0 16px; border-radius: 6px; border: 1px solid #D9D3C7; font-weight: 700; font-size: 14px; display: flex; align-items: center">Preview homepage</a>
-<button type="button" style="height: 40px; padding: 0 18px; border-radius: 6px; border: none; background: #C23B22; color: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Update homepage</button>
+<button type="button" onClick="{{publish}}" style="height: 40px; padding: 0 18px; border-radius: 6px; border: none; background: {{accent}}; color: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Update homepage</button>
 </header>
 
 <div style="padding: 24px 32px 48px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px">
@@ -80,16 +58,12 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <!-- Alert bar -->
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">1</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">Alert bar <span style="font-weight: 500; color: #5B5F66">— top of every page, only when switched on</span></h2>
-<button type="button" aria-label="Alert bar on or off" style="width: 52px; height: 30px; border-radius: 999px; border: none; background: #C23B22; position: relative; cursor: pointer"><span style="position: absolute; top: 3px; left: 25px; width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF"></span></button></div>
-
+<button type="button" onClick="{{toggleAlert}}" aria-label="Alert bar on or off" style="width: 52px; height: 30px; border-radius: 999px; border: none; background: {{alertTrack}}; position: relative; cursor: pointer"><span style="position: absolute; top: 3px; left: {{alertKnob}}; width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF"></span></button></div>
+<sc-if value="{{alertOn}}" hint-placeholder-val="{{true}}">
 <div style="display: flex; gap: 8px; align-items: center">
-
-<button type="button" style="height: 34px; padding: 0 14px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid #16181D; background: #16181D; color: #FFFFFF">Breaking</button>
-
-<button type="button" style="height: 34px; padding: 0 14px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid #D9D3C7; background: #FFFFFF; color: #16181D">Live</button>
-
-<button type="button" style="height: 34px; padding: 0 14px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid #D9D3C7; background: #FFFFFF; color: #16181D">Developing</button>
-
+<sc-for list="{{alertTypes}}" as="at" hint-placeholder-count="3">
+<button type="button" onClick="{{at.pick}}" style="height: 34px; padding: 0 14px; border-radius: 999px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid {{at.border}}; background: {{at.bg}}; color: {{at.fg}}">{{at.label}}</button>
+</sc-for>
 <span style="flex-grow: 1"></span>
 <span style="font-size: 13px; color: #5B5F66">Turns off automatically after</span>
 <select aria-label="Auto off" style="height: 34px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 8px; font-family: inherit; font-size: 13px"><option>6 hours</option><option>12 hours</option><option>24 hours</option><option>Never</option></select>
@@ -97,123 +71,43 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
 <div style="width: 64px; height: 46px; border-radius: 4px; background: #5B3B4A"></div>
 <span style="flex-grow: 1; font-size: 15px; font-weight: 600">Council approves car-free weekends for the harbour district</span>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
+<button type="button" onClick="{{openAlert}}" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
+</div>
+</sc-if>
 </div>
 
-</div>
-
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="4">
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">Main story <span style="font-weight: 500; color: #5B5F66">— the big story at the top</span></h2></div>
-
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{g.n}}</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">{{g.title}} <span style="font-weight: 500; color: #5B5F66">— {{g.hint}}</span></h2></div>
+<sc-for list="{{g.slots}}" as="sl" hint-placeholder-count="2">
 <div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid {{sl.border}}">
 <span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Main</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #2E3A40"></div>
+<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">{{sl.label}}</span>
+<div style="width: 64px; height: 46px; border-radius: 4px; background: {{sl.tone}}"></div>
 <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">The quiet towns rebuilding their high streets one shopfront at a time</span>
-<span style="font-size: 12px; color: #5B5F66">Report · 25 min ago</span>
+<span style="font-size: 15px; font-weight: 600; line-height: 1.3">{{sl.title}}</span>
+<span style="font-size: 12px; color: #5B5F66">{{sl.meta}}</span>
 </div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
+<button type="button" onClick="{{sl.open}}" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
 </div>
-
+<sc-if value="{{sl.isOpen}}" hint-placeholder-val="{{false}}">
+<div style="border: 1px solid #16181D; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 6px; background: #FFFFFF; box-shadow: 0 8px 24px rgba(22,24,29,0.12)">
+<input type="search" aria-label="Find a story" placeholder="Search stories by headline or ID…" style="height: 40px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66; padding-top: 4px">Recently published</span>
+<sc-for list="{{sl.choices}}" as="ch" hint-placeholder-count="5">
+<button type="button" onClick="{{ch.pick}}" style="display: flex; align-items: center; gap: 12px; padding: 8px; border: none; border-radius: 6px; background: transparent; text-align: left; font-family: inherit; cursor: pointer">
+<span style="width: 52px; height: 38px; border-radius: 4px; background: {{ch.tone}}; flex-shrink: 0"></span>
+<span style="font-size: 14px; font-weight: 600; color: #16181D; flex-grow: 1">{{ch.title}}</span>
+<span style="font-size: 12px; color: #5B5F66">{{ch.meta}}</span>
+</button>
+</sc-for>
 </div>
-
+</sc-if>
 </div>
-
-<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">3</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">Next to main <span style="font-weight: 500; color: #5B5F66">— two stories beside the main story</span></h2></div>
-
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
-<span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Top</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #5A4636"></div>
-<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">Why small roasters are winning the coffee price war</span>
-<span style="font-size: 12px; color: #5B5F66">Business · 1 hr ago</span>
+</sc-for>
 </div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
-</div>
-
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
-<span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Bottom</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #2F5A5E"></div>
-<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">Seven island ferries worth the slow way round</span>
-<span style="font-size: 12px; color: #5B5F66">Travel · 2 hr ago</span>
-</div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
-</div>
-
-</div>
-
-</div>
-
-<div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
-<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">4</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">Editor’s picks <span style="font-weight: 500; color: #5B5F66">— the row of four under the main story</span></h2></div>
-
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
-<span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Pick 1</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #3B4A63"></div>
-<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">The repair-first phones making a comeback</span>
-<span style="font-size: 12px; color: #5B5F66">Tech · 3 hr ago</span>
-</div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
-</div>
-
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
-<span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Pick 2</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #34506B"></div>
-<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">A late goal, a packed stadium and a title race reopened</span>
-<span style="font-size: 12px; color: #5B5F66">Sports · 4 hr ago</span>
-</div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
-</div>
-
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
-<span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Pick 3</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #5B3B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">What the new housing bill changes for renters</span>
-<span style="font-size: 12px; color: #5B5F66">Politics · 1 hr ago</span>
-</div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
-</div>
-
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
-<span aria-hidden="true" style="color: #8A8F98; font-size: 18px; cursor: grab">⋮⋮</span>
-<span style="width: 92px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5F66">Pick 4</span>
-<div style="width: 64px; height: 46px; border-radius: 4px; background: #556B4A"></div>
-<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
-<span style="font-size: 15px; font-weight: 600; line-height: 1.3">Balcony gardens that survive the monsoon</span>
-<span style="font-size: 12px; color: #5B5F66">Lifestyle · 5 hr ago</span>
-</div>
-<button type="button" style="height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid #D9D3C7; background: #FFFFFF; font-family: inherit; font-weight: 700; font-size: 13px; cursor: pointer">Change</button>
-</div>
-
-</div>
-
-</div>
+</sc-for>
 
 <!-- Automatic -->
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; align-items: center; gap: 10px">
@@ -226,25 +120,13 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">6</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">Section columns <span style="font-weight: 500; color: #5B5F66">— three sections, left to right; drag to reorder</span></h2></div>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
-
+<sc-for list="{{sectionCols}}" as="sc" hint-placeholder-count="3">
 <div style="border: 1px solid #E4DED3; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #FAF9F7">
-<div style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="color: #8A8F98; cursor: grab">⋮⋮</span><select aria-label="Section" style="flex-grow: 1; height: 36px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 8px; font-family: inherit; font-size: 14px; font-weight: 700; background: #FFFFFF"><option>Politics</option><option>Business</option><option>Travel</option><option>Tech</option><option>Report</option><option>Opinion</option></select></div>
-<span style="font-size: 13px; color: #4A4E55">Lead story: newest in Politics</span>
-<a href="#" style="font-size: 13px; font-weight: 700; color: #C23B22">Pin a different lead story</a>
+<div style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="color: #8A8F98; cursor: grab">⋮⋮</span><select aria-label="Section" style="flex-grow: 1; height: 36px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 8px; font-family: inherit; font-size: 14px; font-weight: 700; background: #FFFFFF"><option>{{sc.name}}</option><option>Business</option><option>Travel</option><option>Tech</option><option>Report</option><option>Opinion</option></select></div>
+<span style="font-size: 13px; color: #4A4E55">Lead story: newest in {{sc.name}}</span>
+<a href="#" style="font-size: 13px; font-weight: 700; color: {{accent}}">Pin a different lead story</a>
 </div>
-
-<div style="border: 1px solid #E4DED3; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #FAF9F7">
-<div style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="color: #8A8F98; cursor: grab">⋮⋮</span><select aria-label="Section" style="flex-grow: 1; height: 36px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 8px; font-family: inherit; font-size: 14px; font-weight: 700; background: #FFFFFF"><option>Business</option><option>Business</option><option>Travel</option><option>Tech</option><option>Report</option><option>Opinion</option></select></div>
-<span style="font-size: 13px; color: #4A4E55">Lead story: newest in Business</span>
-<a href="#" style="font-size: 13px; font-weight: 700; color: #C23B22">Pin a different lead story</a>
-</div>
-
-<div style="border: 1px solid #E4DED3; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #FAF9F7">
-<div style="display: flex; align-items: center; gap: 8px"><span aria-hidden="true" style="color: #8A8F98; cursor: grab">⋮⋮</span><select aria-label="Section" style="flex-grow: 1; height: 36px; border: 1px solid #D9D3C7; border-radius: 6px; padding: 0 8px; font-family: inherit; font-size: 14px; font-weight: 700; background: #FFFFFF"><option>Lifestyle</option><option>Business</option><option>Travel</option><option>Tech</option><option>Report</option><option>Opinion</option></select></div>
-<span style="font-size: 13px; color: #4A4E55">Lead story: newest in Lifestyle</span>
-<a href="#" style="font-size: 13px; font-weight: 700; color: #C23B22">Pin a different lead story</a>
-</div>
-
+</sc-for>
 </div>
 </div>
 
@@ -252,32 +134,17 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; border-radius: 999px; background: #16181D; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center">7</span><h2 style="margin: 0; font-size: 16px; font-weight: 700; flex-grow: 1">Videos <span style="font-weight: 500; color: #5B5F66">— 4 widescreen on top, reels below</span></h2></div>
 <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
-
+<sc-for list="{{wide}}" as="w" hint-placeholder-count="4">
 <div style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 84px; border-radius: 6px; background: #34506B; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px; box-sizing: border-box"><span style="font-size: 11px; font-weight: 700; color: #FFFFFF; background: rgba(12,14,18,0.78); padding: 2px 6px; border-radius: 3px">48:20</span></div>
-<span style="font-size: 13px; font-weight: 600; line-height: 1.3">Ep. 12: What makes a high street work</span>
+<div style="height: 84px; border-radius: 6px; background: {{w.tone}}; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px; box-sizing: border-box"><span style="font-size: 11px; font-weight: 700; color: #FFFFFF; background: rgba(12,14,18,0.78); padding: 2px 6px; border-radius: 3px">{{w.len}}</span></div>
+<span style="font-size: 13px; font-weight: 600; line-height: 1.3">{{w.title}}</span>
 </div>
-
-<div style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 84px; border-radius: 6px; background: #3B4A63; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px; box-sizing: border-box"><span style="font-size: 11px; font-weight: 700; color: #FFFFFF; background: rgba(12,14,18,0.78); padding: 2px 6px; border-radius: 3px">9:45</span></div>
-<span style="font-size: 13px; font-weight: 600; line-height: 1.3">Inside the workshop building satellites</span>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 84px; border-radius: 6px; background: #5A4636; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px; box-sizing: border-box"><span style="font-size: 11px; font-weight: 700; color: #FFFFFF; background: rgba(12,14,18,0.78); padding: 2px 6px; border-radius: 3px">52:03</span></div>
-<span style="font-size: 13px; font-weight: 600; line-height: 1.3">Ep. 11: The four-day week, one year on</span>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 6px">
-<div style="height: 84px; border-radius: 6px; background: #5B3B4A; display: flex; align-items: flex-end; justify-content: flex-end; padding: 6px; box-sizing: border-box"><span style="font-size: 11px; font-weight: 700; color: #FFFFFF; background: rgba(12,14,18,0.78); padding: 2px 6px; border-radius: 3px">6:12</span></div>
-<span style="font-size: 13px; font-weight: 600; line-height: 1.3">The new housing bill in six minutes</span>
-</div>
-
+</sc-for>
 </div>
 <div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; background: #FAF9F7; border: 1px solid #E4DED3">
 <span style="font-size: 14px; font-weight: 700; flex-grow: 1">Reels row</span>
 <span style="font-size: 13px; color: #4A4E55">Show newest 8 reels automatically</span>
-<a href="#" style="font-size: 13px; font-weight: 700; color: #C23B22">Pin reels</a>
+<a href="#" style="font-size: 13px; font-weight: 700; color: {{accent}}">Pin reels</a>
 </div>
 </div>
 
@@ -287,29 +154,9 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 12px">
 <div style="background: #FFFFFF; border: 1px solid #E4DED3; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 700">Homepage map</h2>
-
-<div style="height: 26px; border-radius: 4px; background: #FFFFFF; color: #8A8F98; border: 1px dashed #BDB6A8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Top Banner</div>
-
-<div style="height: 26px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Logo + menu</div>
-
-<div style="height: 74px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Main story + next to main</div>
-
-<div style="height: 34px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Editor’s picks (4)</div>
-
-<div style="height: 22px; border-radius: 4px; background: #FFFFFF; color: #8A8F98; border: 1px dashed #BDB6A8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Main Container Banner</div>
-
-<div style="height: 84px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Latest stories + Most read</div>
-
-<div style="height: 22px; border-radius: 4px; background: #FFFFFF; color: #8A8F98; border: 1px dashed #BDB6A8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Mid Scrapper (sidebar)</div>
-
-<div style="height: 56px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Section columns (3)</div>
-
-<div style="height: 22px; border-radius: 4px; background: #FFFFFF; color: #8A8F98; border: 1px dashed #BDB6A8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Gallery Banner</div>
-
-<div style="height: 56px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Videos + reels</div>
-
-<div style="height: 26px; border-radius: 4px; background: #ECEAE6; color: #4A4E55; border: 1px dashed transparent; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">Footer</div>
-
+<sc-for list="{{mapRows}}" as="m" hint-placeholder-count="12">
+<div style="height: {{m.h}}; border-radius: 4px; background: {{m.bg}}; color: {{m.fg}}; border: 1px dashed {{m.border}}; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: 0.04em">{{m.label}}</div>
+</sc-for>
 <span style="font-size: 12px; color: #5B5F66; padding-top: 6px">Dashed boxes are ad slots — manage them in Ads.</span>
 </div>
 </div>
@@ -317,6 +164,73 @@ a{color:inherit;text-decoration:none}a:hover{color:#B8361E}
 </div>
 </div>
 </div>
-
+</template>
+<script>
+class Component extends DCLogic {
+renderVals() {
+const accent = this.props.accent ?? '#C23B22';
+const s = this.state || {};
+const lang = s.lang || 'EN';
+const alertOn = s.alertOn ?? true;
+const alertType = s.alertType || 'Breaking';
+const nav = [['Overview','Admin-Overview.html'],['Articles','Admin-Articles.html'],['New article','Admin-Editor.html'],['Upload video','Admin-Video.html'],['Homepage layout','Admin-Homepage.html'],['Media library','Admin-Media.html'],['Statistics','Admin-Stats.html'],['Ads','Admin-Ads.html'],['Comments','Admin-Comments.html'],['Categories & tags','Admin-Categories.html'],['Authors','Admin-Authors.html'],['Users & roles','Admin-Users.html'],['Settings','Admin-Settings.html']];
+const active = 'Homepage layout';
+const pool = [
+{ title: 'The quiet towns rebuilding their high streets one shopfront at a time', meta: 'Report · 25 min ago', tone: '#2E3A40' },
+{ title: 'Why small roasters are winning the coffee price war', meta: 'Business · 1 hr ago', tone: '#5A4636' },
+{ title: 'Seven island ferries worth the slow way round', meta: 'Travel · 2 hr ago', tone: '#2F5A5E' },
+{ title: 'The repair-first phones making a comeback', meta: 'Tech · 3 hr ago', tone: '#3B4A63' },
+{ title: 'A late goal, a packed stadium and a title race reopened', meta: 'Sports · 4 hr ago', tone: '#34506B' },
+{ title: 'What the new housing bill changes for renters', meta: 'Politics · 1 hr ago', tone: '#5B3B4A' },
+{ title: 'Balcony gardens that survive the monsoon', meta: 'Lifestyle · 5 hr ago', tone: '#556B4A' },
+{ title: 'Four-day weeks, one year on', meta: 'Business · 3 hr ago', tone: '#6A5343' }
+];
+const def = { main: 0, side1: 1, side2: 2, p1: 3, p2: 4, p3: 5, p4: 6 };
+const pick = Object.assign({}, def, s.pick || {});
+const openKey = s.open || null;
+const slot = (key, label) => {
+const it = pool[pick[key]];
+const isOpen = openKey === key;
+return { label, title: it.title, meta: it.meta, tone: it.tone, isOpen, border: isOpen ? '#16181D' : '#E4DED3',
+open: () => this.setState({ open: isOpen ? null : key }),
+choices: pool.slice(0, 6).map((c, i) => ({ ...c, pick: () => this.setState({ pick: Object.assign({}, pick, { [key]: i }), open: null, changed: true }) })) };
+};
+const chip = (on) => ({ border: on ? '#16181D' : '#D9D3C7', bg: on ? '#16181D' : '#FFFFFF', fg: on ? '#FFFFFF' : '#16181D' });
+return {
+accent,
+navItems: nav.map(([label, href]) => ({ label, href, bg: label === active ? '#2A2D34' : 'transparent', fg: label === active ? '#FFFFFF' : '#C9C4BA', bar: label === active ? accent : 'transparent' })),
+enBg: lang === 'EN' ? '#16181D' : '#FFFFFF', enFg: lang === 'EN' ? '#FFFFFF' : '#16181D',
+dvBg: lang === 'DV' ? '#16181D' : '#FFFFFF', dvFg: lang === 'DV' ? '#FFFFFF' : '#16181D',
+setEN: () => this.setState({ lang: 'EN' }), setDV: () => this.setState({ lang: 'DV' }),
+changedText: s.changed ? '● Unsaved changes — click Update homepage to go live' : 'Live · last updated 25 min ago',
+changedColor: s.changed ? '#B3560E' : '#1E7A5A',
+publish: () => this.setState({ changed: false }),
+alertOn,
+toggleAlert: () => this.setState({ alertOn: !alertOn, changed: true }),
+alertTrack: alertOn ? accent : '#BDB6A8', alertKnob: alertOn ? '25px' : '3px',
+alertTypes: ['Breaking', 'Live', 'Developing'].map(t => ({ label: t, pick: () => this.setState({ alertType: t, changed: true }), ...chip(t === alertType) })),
+openAlert: () => {},
+groups: [
+{ n: 2, title: 'Main story', hint: 'the big story at the top', slots: [slot('main', 'Main')] },
+{ n: 3, title: 'Next to main', hint: 'two stories beside the main story', slots: [slot('side1', 'Top'), slot('side2', 'Bottom')] },
+{ n: 4, title: 'Editor’s picks', hint: 'the row of four under the main story', slots: [slot('p1', 'Pick 1'), slot('p2', 'Pick 2'), slot('p3', 'Pick 3'), slot('p4', 'Pick 4')] }
+],
+sectionCols: [{ name: 'Politics' }, { name: 'Business' }, { name: 'Lifestyle' }],
+wide: [
+{ title: 'Ep. 12: What makes a high street work', len: '48:20', tone: '#34506B' },
+{ title: 'Inside the workshop building satellites', len: '9:45', tone: '#3B4A63' },
+{ title: 'Ep. 11: The four-day week, one year on', len: '52:03', tone: '#5A4636' },
+{ title: 'The new housing bill in six minutes', len: '6:12', tone: '#5B3B4A' }
+],
+mapRows: [
+['Top Banner', '26px', true], ['Logo + menu', '26px', false], ['Main story + next to main', '74px', false], ['Editor’s picks (4)', '34px', false],
+['Main Container Banner', '22px', true], ['Latest stories + Most read', '84px', false], ['Mid Scrapper (sidebar)', '22px', true],
+['Section columns (3)', '56px', false], ['Gallery Banner', '22px', true], ['Videos + reels', '56px', false], ['Footer', '26px', false]
+].map(([label, h, ad]) => ({ label, h, bg: ad ? '#FFFFFF' : '#ECEAE6', fg: ad ? '#8A8F98' : '#4A4E55', border: ad ? '#BDB6A8' : 'transparent' }))
+};
+}
+}
+MBL.boot(Component, {"accent":{"editor":"color","default":"#C23B22"},"$preview":{"width":1440,"height":1760}});
+</script>
 </body>
 </html>
